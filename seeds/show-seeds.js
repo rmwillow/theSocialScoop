@@ -1,4 +1,3 @@
-const { post } = require('../controllers');
 const { Show } = require('../models');
 
 const showData = [
