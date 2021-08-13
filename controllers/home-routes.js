@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
 const { User, Rating, Show, Review, Vote } = require('../models');
 
 // get all reviews for homepage
@@ -35,6 +34,5 @@ router.get("/", (req, res) => {
   
     res.render("signup");
   });
-
 
 module.exports = router;
