@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS employees;
-CREATE DATABASE employees;
-USE employees;
+DROP DATABASE IF EXISTS theSocialScoop;
+CREATE DATABASE theSocialScoop;
+USE theSocialScoop;
