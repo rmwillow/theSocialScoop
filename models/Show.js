@@ -2,7 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // create Show model
-class Show extends Model {}
+class Show extends Model { }
 
 // create fields/columns for Show model
 Show.init(
