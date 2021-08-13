@@ -26,7 +26,7 @@ Show.init(
       allowNull: false,
     },
     genre: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     season_count: {
