@@ -112,4 +112,8 @@ const showData = [
         apiId: 2734
     },
     
-]
+];
+
+const seedShows = () => Show.bulkCreate(showData);
+
+module.exports = seedShows;
