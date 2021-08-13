@@ -33,10 +33,10 @@ User.hasMany(Vote, {
 //   onDelete: 'SET NULL'
 // });
 
-// Vote.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'SET NULL'
-// });
+Vote.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
 
 Vote.belongsTo(Review, {
   foreignKey: 'review_id',
