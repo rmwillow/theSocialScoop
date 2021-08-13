@@ -21,17 +21,17 @@ User.hasMany(Vote, {
   foreignKey: 'user_id'
 });
 
-// Review.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'SET NULL'
-// });
+Review.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
 
-// Review.belongsToMany(User, {
-//   through: Vote,
-//   as: 'voted_reviews',
-//   foreignKey: 'review_id',
-//   onDelete: 'SET NULL'
-// });
+Review.belongsToMany(User, {
+  through: Vote,
+  as: 'voted_reviews',
+  foreignKey: 'review_id',
+  onDelete: 'SET NULL'
+});
 
 Vote.belongsTo(User, {
   foreignKey: 'user_id',
