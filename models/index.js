@@ -62,8 +62,8 @@ Rating.belongsTo(Show, {
 //   onDelete: 'SET NULL'
 // });
 
-// Show.hasMany(Rating, {
-//   foreignKey: 'show_id'
-// });
+Show.hasMany(Rating, {
+  foreignKey: 'show_id'
+});
 
 module.exports = { User, Show, Review, Rating, Vote };
