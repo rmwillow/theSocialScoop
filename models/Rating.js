@@ -24,6 +24,7 @@ Rating.init(
         }
       },
       rating: {
+        type: DataTypes.INTEGER,
         validate: {
             min: 1,
             max: 5

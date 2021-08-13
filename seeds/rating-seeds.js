@@ -1,3 +1,5 @@
+const { Rating } = require('../models')
+
 const ratingData = [
     {
         user_id: 6,
@@ -14,6 +16,8 @@ const ratingData = [
         show_id: 45,
         rating: 3,
     }
-]
+];
+
+const ratingData = () => Rating.bulkCreate(ratingData);
 
 module.exports = ratingData;
