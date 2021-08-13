@@ -47,15 +47,15 @@ Review.hasMany(Vote, {
   foreignKey: 'review_id'
 });
 
-// Rating.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'SET NULL'
-// });
+Rating.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
 
-// Rating.belongsTo(Show, {
-//   foreignKey: 'show_id',
-//   onDelete: 'SET NULL'
-// });
+Rating.belongsTo(Show, {
+  foreignKey: 'show_id',
+  onDelete: 'SET NULL'
+});
 
 // User.hasMany(Rating, {
 //   foreignKey: 'user_id',
