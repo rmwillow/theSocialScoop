@@ -69,7 +69,7 @@ Review.init(
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
     },
   },
   {
