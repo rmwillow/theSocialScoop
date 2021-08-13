@@ -1,4 +1,9 @@
-const ratingData = {
-    max: 5,                 
-    min: 1, 
-} 
+const ratingData = [
+    {
+        user_id: 9,
+        show_id: 19,
+        rating: 1,
+    }
+]
+
+module.exports = ratingData;

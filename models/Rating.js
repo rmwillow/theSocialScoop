@@ -22,6 +22,12 @@ Rating.init(
           model: 'show',
           key: 'id'
         }
+      },
+      rating: {
+        validate: {
+            min: 1,
+            max: 5
+          },
       }
     },
     {
