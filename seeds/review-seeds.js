@@ -39,25 +39,25 @@ const reviewdata = [
   },
   {
     review_text: 'In hac habitasse platea dictumst.',
-    user_id: 7,
+    user_id: 1,
     show_id: 7,
     date_watched: '2021-08-07'
   },
   {
     review_text: 'In hac habitasse platea dictumst.',
-    user_id: 8,
+    user_id: 3,
     show_id: 8,
     date_watched: '2021-08-08'
   },
   {
     review_text: 'Duis ac nibh.',
-    user_id: 9,
+    user_id: 6,
     show_id: 9,
     date_watched: null
   },
   {
     review_text: 'Curabitur at ipsum ac tellus semper interdum.',
-    user_id: 10,
+    user_id: 3,
     show_id: 10,
     date_watched: '2021-08-10'
   },
