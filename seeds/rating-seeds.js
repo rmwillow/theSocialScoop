@@ -18,6 +18,6 @@ const ratingData = [
     }
 ];
 
-const ratingData = () => Rating.bulkCreate(ratingData);
+//const ratingData = () => Rating.bulkCreate(ratingData);
 
 module.exports = ratingData;
