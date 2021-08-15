@@ -36,7 +36,11 @@ Show.init(
     episode_count: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
+    }, 
+    apiId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
     // add rating value HERE once rating model has been built
 
     // year? or last air date? 
