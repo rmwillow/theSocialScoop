@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Rating, Review, Show, Vote } = require('../../models');
+const { User, Rating, Review, Show} = require('../../models');
 
 //GET ROUTE
 router.get('/', (req, res) => {
@@ -24,6 +24,10 @@ router.get('/id:', (req, res) => {
             {
                 model: Show,
                 attributes: ['id', 'title', 'overview', 'poster_path'],
+            },
+            {
+                model: Rating,
+                attributes: ['id', 'rating'],
             },
             {
                 model: Review,

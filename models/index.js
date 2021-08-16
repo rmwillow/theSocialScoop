@@ -10,22 +10,19 @@ User.hasMany(Review, {
   foreignKey: 'user_id'
 });
 
-User.belongsToMany(Review, {
-  through: Vote,
-  as: 'voted_reviews',
+Review.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-User.hasMany(Vote, {
-  foreignKey: 'user_id'
+Rating.belongsTo(User, {
+  through: User,
+  foreignKey: 'user_id',
 });
 
-Show.hasMany(Rating, {
-  foreignKey: 'show_id'
-});
-
-Review.belongsTo(User, {
+User.belongsToMany(Review, {
+  through: Vote,
+  as: 'voted_reviews',
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
@@ -47,20 +44,38 @@ Vote.belongsTo(Review, {
   onDelete: 'SET NULL'
 });
 
+User.hasMany(Vote, {
+  foreignKey: 'user_id'
+});
+
+Show.hasMany(Rating, {
+  foreignKey: 'show_id'
+});
+
+
+User.hasMany(Rating, {
+  foreignKey: 'user_id'
+});
+
+
 Review.hasMany(Vote, {
   foreignKey: 'review_id'
 });
 
-Rating.belongsTo(User, {
-  through: User,
-  foreignKey: 'user_id',
-});
 
-Rating.belongsToMany(Show, {
-  through: Show,
-  foreignKey: 'show_id',
-});
 
+// Rating.belongsToMany(Show, {
+//   through: User,
+//   as: 'user_rating',
+//   foreignKey: 'show_id'
+// });
+
+
+// Show.belongsToMany(Rating, {
+//   through: Show,
+//   as: 'show_rating',
+//   foreignKey: 'show_id'
+// })
 
 
 // User.hasMany(Rating, {
@@ -70,4 +85,9 @@ Rating.belongsToMany(Show, {
 
 
 
-module.exports = { User, Show, Review, Rating, Vote };
+module.exports = { 
+  User, 
+  Show, 
+  Review, 
+  Rating, 
+  Vote };

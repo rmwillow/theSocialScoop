@@ -9,20 +9,25 @@ const sequelize = require('../config/connection');
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('--------------');
-  await seedUsers();
-  console.log('--------------');
-
-  await seedShow();
-  console.log('--------------');
-
-  await seedReview();
-  console.log('--------------');
 
   await seedRating();
-  console.log('--------------');
+  console.log('------RATING SEEDS--------');
+  
+  await seedUsers();
+  console.log('-----USER SEEDS---------');
+
+  await seedShow();
+  console.log('------SHOW SEEDS--------');
+
+  await seedReview();
+  console.log('-------REVIEW SEEDS-------');
 
   await seedVotes();
-  console.log('--------------');
+  console.log('-------VOTE SEEDS-------');
+
+
+
+
 
   process.exit(0);
 };

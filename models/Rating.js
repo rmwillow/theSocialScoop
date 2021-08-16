@@ -8,16 +8,18 @@ Rating.init(
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        
+        
       },
-      user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'user',
-          key: 'id'
-        }
-      },
+      // user_id: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      //   references: {
+      //     model: 'user',
+      //     key: 'id'
+      //   }
+      // },
       show_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -28,6 +30,7 @@ Rating.init(
       },
       rating: {
         type: DataTypes.INTEGER,
+        allowNull: true,
         validate: {
             min: 1,
             max: 5
@@ -36,10 +39,9 @@ Rating.init(
     },
     {
       sequelize,
-      timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'rating'
+      modelName: "rating",
     }
   );
 
