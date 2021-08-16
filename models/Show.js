@@ -2,7 +2,32 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // create Show model
-class Show extends Model { }
+class Show extends Model {
+  static rateShow(body, models) {
+    return models.Rating.create({
+      rating: body.rating,
+      user_id: body.user_id,
+      show_id: body.show_id,
+    }).then(() => {
+      return Show.findOne({
+        where: {
+          id: body.show_id,
+        },
+        attributes: [
+          "id",
+          "title",
+          "created_at",
+          [
+            sequelize.literal(
+              "(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"
+            ),
+            "rating_average",
+          ],
+        ]
+      });
+    });
+  }
+}
 
 // create fields/columns for Show model
 Show.init(
