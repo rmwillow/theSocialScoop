@@ -1,93 +1,256 @@
+/* MAIN.HANDLEBARS STYLES */
 * {
-    /* background-color: black; */
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 16px;
-    
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
 }
-html, body, header {
-    background: rgb(86,126,126);
-    background: linear-gradient(180deg, rgb(41, 58, 71) 0%, rgb(44, 75, 85) 30%, rgba(35,55,61,1) 95%);
+html,
+body,
+header {
+  background: rgb(86, 126, 126);
+  background: linear-gradient(
+    180deg,
+    rgb(41, 58, 71) 0%,
+    rgb(44, 75, 85) 30%,
+    rgba(35, 55, 61, 1) 95%
+  );
 }
 
 nav {
-    background: rgb(47,69,79);
-background: linear-gradient(0deg, rgb(37, 61, 71) 0%, rgba(35,51,61,1) 95%);
+  background: rgb(47, 69, 79);
+  background: linear-gradient(
+    0deg,
+    rgb(37, 61, 71) 0%,
+    rgba(35, 51, 61, 1) 95%
+  );
+  padding-bottom: 2rem;
 }
 .navbar-brand {
-    font-weight: 300;
-    font-family: 'Josefin Sans', sans-serif;
-    padding-left: 2rem;
-    font-size: 2rem;
-    border:;
+  font-weight: 300;
+  font-family: "Josefin Sans", sans-serif;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  font-size: 2rem;
+  border: 0.2rem solid rgb(250, 174, 174);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  box-shadow: 0 0 0.2rem #f86757, 0 0 0.2rem #f86757, 0 0 2rem #c6362e,
+    0 0 0.08rem #c6362e, 0 0 2.8rem #c6362e, inset 0 0 1.3rem #c6362e;
 }
 .neon-text {
-    color: rgb(250, 174, 174);
-    text-shadow:
-    0 0 .1rem #f86757,
-    0 0 .2rem #f86757,
-    0 0 .3rem #c6362e,
-    0 0 .4rem #c6362e,
-    0 0 .5rem #c6362e,
-    0 0 .6rem #c6362e,
-    0 0 .7rem #c6362e;
+  color: rgb(250, 174, 174);
+  text-shadow: 0 0 0.1rem #f86757, 0 0 0.2rem #f86757, 0 0 0.3rem #c6362e,
+    0 0 0.4rem #c6362e, 0 0 0.5rem #c6362e, 0 0 0.6rem #c6362e,
+    0 0 0.7rem #c6362e;
 }
 
 .navbar-brand:hover {
-    color: rgb(243, 128, 124);
+  color: rgb(252, 209, 209);
 }
 
-.navbar-collapse, .nav-item {
-    justify-content: flex-end;
-    padding-right: 2rem;
+.navbar-collapse,
+.nav-item {
+  justify-content: flex-end;
+  padding-right: 2rem;
 }
 
 .nav-link {
-    font-size: 1rem;
-    padding-right: 2rem;
-    font-weight: 500;
-    color: #567e7e
+  font-size: 1.15rem;
+  padding-right: 2rem;
+  font-weight: 500;
+  color: #afb4b4;
 }
 
 .nav-link:hover {
-    color: #85a8a2
+  color: #d3d6d6;
 }
 
 .container {
-    padding-top: 5rem;
+  padding-top: 5rem;
 }
 
+/* LOGIN.HANDLEBARS STYLES */
 .login-page-container {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    color: #85a8a2;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: #85a8a2;
 }
 
 .login-page-container section {
-    width: 30rem;
+  width: 30rem;
 }
 
 .d-flex {
-    justify-content: center;
-    color: #85a8a2;
+  justify-content: center;
+  color: #85a8a2;
 }
 
 .input-group {
-    margin-bottom: 1.5rem;
-    
+  margin-bottom: 1.5rem;
 }
 
-.form-control, .form-control:focus {
-    background-color: #85a8a2;
-    color: #FFF;
-    border-color: #85a8a2;
+.form-control,
+.form-control:focus {
+  background-color: #85a8a2;
+  color: #fff;
+  border-color: #85a8a2;
 }
 
 .input-group-text {
-    background-color: #a1bdb8;
+  background-color: #a1bdb8;
 }
 
 .btn-primary {
-    background-color: #85a8a2;
-    border-color: #85a8a2;
+  background-color: #85a8a2;
+  border-color: #85a8a2;
 }
+
+
+/* HOMEPAGE.HANDLEBARS STYLES */
+.show-posters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 2rem 2rem 1rem 2rem;
+    align-self: center;
+}
+
+.poster-container {
+    padding-bottom: 2rem;
+}
+
+
+/* SINGLE PAGE STYLES */
+.show-info-section .container {
+    padding-left: 5rem;
+    padding-right: 5rem; 
+}
+
+.single-page-poster-container img {
+    display: flex;
+}
+.single-page-poster-container {
+    display: flex;
+    justify-content: center;
+}
+
+.show-info-section p, .show-info-section h1, .show-title-span, .show-info-section h6, .show-info-section div, .show-info-section a {
+    font-family: 'Libre Baskerville', serif;
+    color: #afb4b4;
+    text-decoration: none;
+}
+
+.show-info-section h1, .show-title-span {
+    font-weight: 700;
+}
+
+.badge {
+    font-weight: 400;
+    
+    margin-left: 1rem
+}
+
+.badge a {
+    font-size: .8rem;
+}
+
+.review-button {
+    
+    border-color: rgba(35, 51, 61, 1);
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.review-button:hover {
+   background-color: rgba(35, 51, 61, 1);;
+   border-color: rgba(35, 51, 61, 1);
+}
+
+
+.review-textarea {
+    width: 60%;
+
+}
+
+.review-section {
+    padding-left: 5rem;
+    padding-top: 5rem;
+}
+
+.review-section h2, .review-section a{
+    font-family: 'Libre Baskerville', serif;
+    color: #afb4b4;
+    text-decoration: none;
+    text-decoration-thickness: 0;
+}
+
+
+
+
+/*!
+ * Hover.css (http://ianlunn.github.io/Hover/)
+ * Version: 2.3.2
+ * Author: Ian Lunn @IanLunn
+ * Author URL: http://ianlunn.co.uk/
+ * Github: https://github.com/IanLunn/Hover
+ * Hover.css Copyright Ian Lunn 2017. Generated with Sass.
+ */
+/* Float Shadow */
+ .hvr-float-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+  .hvr-float-shadow:before {
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 100%;
+    left: 5%;
+    height: 10px;
+    width: 90%;
+    opacity: 0;
+    background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+    /* W3C */
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform, opacity;
+    transition-property: transform, opacity;
+  }
+  .hvr-float-shadow:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    /* move the element up by 5px */
+  }
+  .hvr-float-shadow:hover:before, .hvr-float-shadow:focus:before, .hvr-float-shadow:active:before {
+    opacity: 1;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+    /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+  }
+
+  /* Glow */
+.hvr-glow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px #506662;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+  }
+  .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+    box-shadow: 0 0 8px #506662;
+  }
