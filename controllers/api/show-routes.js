@@ -5,9 +5,22 @@ const { Show } = require('../../models');
 router.get(('/'), (req, res) => {
     Show.findAll({
         attributes: [
-            "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count"
-        ]//, 
-        // include: [{model: ratings, ETC. }]
+            "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count",
+            [
+                sequelize.literal("(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"),
+                "rating_average",
+            ],
+        ],
+        include: [
+            {
+              model: Review,
+              attributes: ['id', 'review_text', 'user_id', 'show_id', 'date_watched', 'created_at'],
+              include: {
+                model: User,
+                attributes: ['username']
+              }
+            }
+        ]
     })
     .then(showData => res.json(showData))
     .catch(err => {
@@ -23,9 +36,22 @@ router.get(('/:id'), (req, res) => {
             id: req.params.id
         },
         attributes: [
-            "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count"
-        ]//, 
-        // include: [{model: ratings, ETC. }]
+            "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count",
+            [
+                sequelize.literal("(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"),
+                "rating_average",
+            ],
+        ],
+        include: [
+            {
+              model: Review,
+              attributes: ['id', 'review_text', 'user_id', 'show_id', 'date_watched', 'created_at'],
+              include: {
+                model: User,
+                attributes: ['username']
+              }
+            }
+        ]
     })
     .then(showData => {
         if(!showData) {
@@ -39,5 +65,16 @@ router.get(('/:id'), (req, res) => {
         res.status(500).json(err)
     });
 });
+
+// add rating to show
+router.put('/rate', (req, res) => {
+    // custom static method created in models/Show.js
+    Show.rateShow({ ...req.body, user_id: req.session.user_id }, { Rating, User })
+      .then(updatedShowData => res.json(updatedShowData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 module.exports = router;
