@@ -11,6 +11,7 @@ Rating.init(
         autoIncrement: true,
         
         
+        
       },
       // user_id: {
       //   type: DataTypes.INTEGER,

@@ -7,3 +7,4 @@ CREATE DATABASE theSocialScoop;
 
 -- USE DATABASE
 USE theSocialScoop;
+
