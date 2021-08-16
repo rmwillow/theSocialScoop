@@ -15,4 +15,17 @@ router.get(('/'), (req, res) => {
     });
 });
 
+//adding post route for testing
+router.post('/', (req, res) => {
+    // create a new rating
+    Rating.create({
+      rating: req.body.rating
+    })
+      .then(dbRatingData => res.json(dbRatingData))
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+    });
+  });
+
 module.exports = router;
