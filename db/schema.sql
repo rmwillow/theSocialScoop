@@ -1,9 +1,8 @@
-
 -- DROP DATABASE
-DROP DATABASE IF EXISTS theSocialScoop;
+DROP DATABASE IF EXISTS broadcastr_db;
 
 -- CREATE DATABASE
-CREATE DATABASE theSocialScoop;
+CREATE DATABASE broadcastr_db;
 
 -- USE DATABASE
-USE theSocialScoop;
+USE broadcastr_db;
