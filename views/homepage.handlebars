@@ -1,1 +1,7 @@
-<div> </div>
+<section class="show-posters-container">
+{{#each shows}}
+<div class="poster-container"> 
+   <a class="hvr-float-shadow hvr-glow" href="/shows/{{id}}"><img src="https://image.tmdb.org/t/p/w200/{{poster_path}}"></a>
+</div>
+{{/each}}
+</section>
