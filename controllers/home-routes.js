@@ -74,6 +74,7 @@ router.get('/shows/:id', (req, res) => {
       "genre",
       "season_count",
       "episode_count",
+      "apiId",
       [
         sequelize.literal(
           "(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"
@@ -104,8 +105,8 @@ router.get('/shows/:id', (req, res) => {
         res.status(404).json({ message: "No post found with this id!" });
         return;
       };
-      const shows = showData.get({ plain: true });
-      res.render("single-page", { shows });
+      const show = showData.get({ plain: true });
+      res.render("single-page", { show });
     })
     .catch((err) => {
       console.log(err);

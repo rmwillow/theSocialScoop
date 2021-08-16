@@ -58,11 +58,11 @@ nav {
   font-size: 1.15rem;
   padding-right: 2rem;
   font-weight: 500;
-  color: #567e7e;
+  color: #afb4b4;
 }
 
 .nav-link:hover {
-  color: #85a8a2;
+  color: #d3d6d6;
 }
 
 .container {
@@ -106,17 +106,86 @@ nav {
   border-color: #85a8a2;
 }
 
+
 /* HOMEPAGE.HANDLEBARS STYLES */
 .show-posters-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 2rem 2rem 1rem 2rem;
+    align-self: center;
 }
 
 .poster-container {
     padding-bottom: 2rem;
 }
+
+
+/* SINGLE PAGE STYLES */
+.show-info-section .container {
+    padding-left: 5rem;
+    padding-right: 5rem; 
+}
+
+.single-page-poster-container img {
+    display: flex;
+}
+.single-page-poster-container {
+    display: flex;
+    justify-content: center;
+}
+
+.show-info-section p, .show-info-section h1, .show-title-span, .show-info-section h6, .show-info-section div, .show-info-section a {
+    font-family: 'Libre Baskerville', serif;
+    color: #afb4b4;
+    text-decoration: none;
+}
+
+.show-info-section h1, .show-title-span {
+    font-weight: 700;
+}
+
+.badge {
+    font-weight: 400;
+    
+    margin-left: 1rem
+}
+
+.badge a {
+    font-size: .8rem;
+}
+
+.review-button {
+    
+    border-color: rgba(35, 51, 61, 1);
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.review-button:hover {
+   background-color: rgba(35, 51, 61, 1);;
+   border-color: rgba(35, 51, 61, 1);
+}
+
+
+.review-textarea {
+    width: 60%;
+
+}
+
+.review-section {
+    padding-left: 5rem;
+    padding-top: 5rem;
+}
+
+.review-section h2, .review-section a{
+    font-family: 'Libre Baskerville', serif;
+    color: #afb4b4;
+    text-decoration: none;
+    text-decoration-thickness: 0;
+}
+
+
 
 
 /*!
