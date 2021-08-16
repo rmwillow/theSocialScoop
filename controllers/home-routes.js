@@ -100,7 +100,11 @@ router.get('/shows/:id', (req, res) => {
     ],
   })
     .then((showData) => {
-      const shows = showData.map((post) => post.get({ plain: true }));
+      if(!showData) {
+        res.status(404).json({ message: "No post found with this id!" });
+        return;
+      };
+      const shows = showData.get({ plain: true });
       res.render("single-page", { shows });
     })
     .catch((err) => {
