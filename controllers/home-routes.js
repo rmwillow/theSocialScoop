@@ -59,6 +59,55 @@ router.get("/", (req, res) => {
 //     .catch((err) => {
 //       res.status(500).json(err);
 //     });
+
+// single-page routes
+router.get('/shows/:id', (req, res) => {
+  Show.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      "id",
+      "title",
+      "overview",
+      "poster_path",
+      "genre",
+      "season_count",
+      "episode_count",
+      [
+        sequelize.literal(
+          "(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"
+        ),
+        "rating_average",
+      ],
+    ],
+    include: [
+      {
+        model: Review,
+        attributes: [
+          "id",
+          "review_text",
+          "user_id",
+          "show_id",
+          "date_watched",
+          "created_at",
+        ],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  })
+    .then((showData) => {
+      const shows = showData.map((post) => post.get({ plain: true }));
+      res.render("single-page", { shows });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
     
 
 // Login, Logout 7 Signup routes
