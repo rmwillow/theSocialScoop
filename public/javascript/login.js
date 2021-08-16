@@ -1,7 +1,7 @@
 async function loginHandler(event) {
     event.preventDefault();
 
-    const email = document.querySelector('#email-login').value.trim();
+    const email = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
     if (email && password) {
@@ -50,4 +50,4 @@ async function signupHandler(event) {
 
 
 document.querySelector('.login-form').addEventListener('submit', loginHandler);
-document.querySelector('.signup-form').addEventListener('submit', signupHandler);
+document.querySelector('#signup-form').addEventListener('submit', signupHandler);
