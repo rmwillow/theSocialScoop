@@ -1,0 +1,93 @@
+* {
+    /* background-color: black; */
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    
+}
+html, body, header {
+    background: rgb(86,126,126);
+    background: linear-gradient(180deg, rgb(41, 58, 71) 0%, rgb(44, 75, 85) 30%, rgba(35,55,61,1) 95%);
+}
+
+nav {
+    background: rgb(47,69,79);
+background: linear-gradient(0deg, rgb(37, 61, 71) 0%, rgba(35,51,61,1) 95%);
+}
+.navbar-brand {
+    font-weight: 300;
+    font-family: 'Josefin Sans', sans-serif;
+    padding-left: 2rem;
+    font-size: 2rem;
+    border:;
+}
+.neon-text {
+    color: rgb(250, 174, 174);
+    text-shadow:
+    0 0 .1rem #f86757,
+    0 0 .2rem #f86757,
+    0 0 .3rem #c6362e,
+    0 0 .4rem #c6362e,
+    0 0 .5rem #c6362e,
+    0 0 .6rem #c6362e,
+    0 0 .7rem #c6362e;
+}
+
+.navbar-brand:hover {
+    color: rgb(243, 128, 124);
+}
+
+.navbar-collapse, .nav-item {
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    padding-right: 2rem;
+    font-weight: 500;
+    color: #567e7e
+}
+
+.nav-link:hover {
+    color: #85a8a2
+}
+
+.container {
+    padding-top: 5rem;
+}
+
+.login-page-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: #85a8a2;
+}
+
+.login-page-container section {
+    width: 30rem;
+}
+
+.d-flex {
+    justify-content: center;
+    color: #85a8a2;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    
+}
+
+.form-control, .form-control:focus {
+    background-color: #85a8a2;
+    color: #FFF;
+    border-color: #85a8a2;
+}
+
+.input-group-text {
+    background-color: #a1bdb8;
+}
+
+.btn-primary {
+    background-color: #85a8a2;
+    border-color: #85a8a2;
+}
