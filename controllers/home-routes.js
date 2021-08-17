@@ -218,7 +218,7 @@ router.get("/shows/:id", (req, res) => {
   })
     .then((showData) => {
       if (!showData) {
-        res.status(404).json({ message: "No show found with this id!" });
+        res.status(404).json({ message: "No post found with this id!" });
         return;
       }
       const show = showData.get({ plain: true });

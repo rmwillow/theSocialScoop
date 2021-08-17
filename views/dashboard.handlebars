@@ -1,0 +1,27 @@
+<section>
+  <h2>Create New Review</h2>
+<form class="new-review-form">
+    <div>
+      <label for="review-url">Link</label>
+      <input id="review-url" name="review-url" />
+    </div>
+
+    <button type="submit" class="btn">Create Review</button>
+  </form>
+</section>
+
+{{#if review.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ol>
+    {{#each reviews as |review|}}
+    <li>
+      {{> review-info review}}
+      <a href="/dashboard/edit/{{review.id}}" class="edit-link">Edit Review</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+<script src="/javascript/create-review.js"></script>
