@@ -9,7 +9,8 @@ const showData = [
         season_count: 1,
         episode_count: 6,
         apiId: 84958,
-        createdBy: "Michael Waldron"
+        createdBy: "Michael Waldron",
+        airDate: "2021-06-09"
     },
     {
         title: "Control Z",
@@ -19,7 +20,8 @@ const showData = [
         season_count: 2,
         episode_count: 16,
         apiId: 102903,
-        createdBy: "Adriana Pelusi"
+        createdBy: "Adriana Pelusi",
+        airDate: "2020-05-22"
     },
     {
         title: "Riverdale",
@@ -29,7 +31,8 @@ const showData = [
         season_count: 6, 
         episode_count: 91,
         apiId: 69050,
-        createdBy: "Roberto Aguirre-Sacasa"
+        createdBy: "Roberto Aguirre-Sacasa",
+        airDate: "2017-01-26"
     },
     {
         title: "Lucifer",
@@ -39,7 +42,8 @@ const showData = [
         season_count: 6,
         episode_count: 93,
         apiId: 63174,
-        createdBy: "om Kapinos"
+        createdBy: "om Kapinos",
+        airDate: "2016-01-25"
 
     },
     {
@@ -50,7 +54,8 @@ const showData = [
         season_count: 38,
         episode_count: 7132,
         apiId: 2912,
-        createdBy: "Merv Griffin"
+        createdBy: "Merv Griffin",
+        airDate: "1984-09-10"
     },
     {
         title: "Grey's Anatomy",
@@ -60,7 +65,8 @@ const showData = [
         season_count: 18,
         episode_count: 380,
         apiId: 1416,
-        createdBy: "Shonda Rhimes"
+        createdBy: "Shonda Rhimes",
+        airDate: "2005-03-27"
     },
     {
         title: 'La Reina del Flow',
@@ -70,7 +76,8 @@ const showData = [
         season_count: 2,
         episode_count: 161,
         apiId: 80240,
-        createdBy: "Andres Salgado"
+        createdBy: "Andres Salgado",
+        airDate: "2021-08-13"
     },
     {
         title: "Broker",
@@ -80,7 +87,8 @@ const showData = [
         season_count: 2,
         episode_count: 42,
         apiId: 117874,
-        createdBy: "普通话"
+        createdBy: "普通话",
+        airDate: "2021-08-15"
     },
     {
         title: "Anupamaa",
@@ -90,7 +98,8 @@ const showData = [
         season_count: 1,
         episode_count: 355,
         apiId: 116479,
-        createdBy: "普通话"
+        createdBy: "心跳源计划",
+        airDate: "2021-08-15"
     },
     {
        title: "Game of Thrones",
@@ -100,7 +109,9 @@ const showData = [
        season_count: 8,
        episode_count: 73,
        apiId: 1399,
-       createdBy: "हिन्"
+       createdBy: "David Benioff",
+       airDate: "2011-04-17"
+
     },
     {
         title: "The Vampire Diaries",
@@ -110,7 +121,8 @@ const showData = [
         season_count: 8,
         episode_count: 171,
         apiId: 18165,
-        createdBy: "Kevin Williamson"
+        createdBy: "Kevin Williamson",
+        airDate: "2009-09-10"
     },
     {
         title: "Law & Order: Special Victims Unit",
@@ -120,7 +132,8 @@ const showData = [
         season_count: 23,
         episode_count: 497,
         apiId: 2734,
-        createdBy: "Dick Wolf"
+        createdBy: "Dick Wolf",
+        airDate: "1999-09-20"
     }
     
 ];

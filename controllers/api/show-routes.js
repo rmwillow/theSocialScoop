@@ -6,7 +6,7 @@ const sequelize = require('../../config/connection');
 router.get(('/'), (req, res) => {
     Show.findAll({
         attributes: [
-            "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count", "createdBy",
+            "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count", "createdBy", "airDate",
             [
                 sequelize.literal("(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"),
                 "rating_average",
@@ -37,7 +37,7 @@ router.get(('/:id'), (req, res) => {
             id: req.params.id
         },
         attributes: [
-            "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count",
+            "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count", "createdBy", "airDate",
             [
                 sequelize.literal("(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"),
                 "rating_average",
