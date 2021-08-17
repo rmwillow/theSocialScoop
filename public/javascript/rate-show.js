@@ -1,6 +1,8 @@
 async function rateShowClickHandler(event) {
     event.preventDefault();
   
+    const rating = document
+    .querySelector('X[name="rating-value"]').value.trim(); // need to update X with correct query selector
     const show_id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
@@ -22,5 +24,5 @@ async function rateShowClickHandler(event) {
     }
   }
   
-  document.querySelector('.rate-show-btn').addEventListener('click', rateShowClickHandler);
+  document.querySelector('.star-rating').addEventListener('click', rateShowClickHandler);
   
