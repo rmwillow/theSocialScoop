@@ -10,4 +10,18 @@
   </form>
 </section>
 
+{{#if review.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ol>
+    {{#each reviews as |review|}}
+    <li>
+      {{> review-info review}}
+      <a href="/dashboard/edit/{{review.id}}" class="edit-link">Edit Review</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
 <script src="/javascript/create-review.js"></script>
