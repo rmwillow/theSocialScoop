@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
       "episode_count",
       [
         sequelize.literal(
-          "(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"
+          "(SELECT ROUND(AVG(rating),1) FROM rating WHERE show.id = rating.show_id)"
         ),
         "rating_average",
       ],
@@ -72,7 +72,7 @@ router.get("/search/:term", (req, res) => {
       "episode_count",
       [
         sequelize.literal(
-          "(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"
+          "(SELECT ROUND(AVG(rating),1) FROM rating WHERE show.id = rating.show_id)"
         ),
         "rating_average",
       ],
@@ -140,7 +140,7 @@ router.get("/shows/:id", (req, res) => {
       "apiId",
       [
         sequelize.literal(
-          "(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"
+          "(SELECT ROUND(AVG(rating),1) FROM rating WHERE show.id = rating.show_id)"
         ),
         "rating_average",
       ],
@@ -165,7 +165,7 @@ router.get("/shows/:id", (req, res) => {
   })
     .then((showData) => {
       if (!showData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: "No show found with this id!" });
         return;
       }
       const show = showData.get({ plain: true });
