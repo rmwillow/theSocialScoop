@@ -49,6 +49,59 @@ router.get("/", (req, res) => {
     });
 });
 
+// sort all shows/reviews for homepage
+router.get("/sort/:type", (req, res) => {
+  let orderStatement = [];
+  if (req.params.type == "az") {
+    orderStatement = "title ASC";
+  } else if (req.params.type == "rating") {
+    orderStatement = "rating_average DESC";
+  }
+  Show.findAll({
+    attributes: [
+      "id",
+      "title",
+      "overview",
+      "poster_path",
+      "genre",
+      "season_count",
+      "episode_count",
+      [
+        sequelize.literal(
+          "(SELECT ROUND(AVG(rating),1) FROM rating WHERE show.id = rating.show_id)"
+        ),
+        "rating_average",
+      ],
+    ],
+    order: [[sequelize.literal(orderStatement)]],
+    include: [
+      {
+        model: Review,
+        attributes: [
+          "id",
+          "review_text",
+          "user_id",
+          "show_id",
+          "date_watched",
+          "created_at",
+        ],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  })
+    .then((showData) => {
+      const shows = showData.map((post) => post.get({ plain: true }));
+      res.render("homepage", { shows });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // get all reviews/shows for homepage/search results page
 router.get("/search/:term", (req, res) => {
   Show.findAll({
