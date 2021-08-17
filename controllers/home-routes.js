@@ -101,7 +101,7 @@ router.get('/shows/:id', (req, res) => {
     ],
   })
     .then((showData) => {
-      if(!showData) {
+      if (!showData) {
         res.status(404).json({ message: "No post found with this id!" });
         return;
       };
@@ -113,23 +113,23 @@ router.get('/shows/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-    
+
 
 // Login, Logout 7 Signup routes
 router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
+  // if (req.session.loggedIn) {
+  //   // res.redirect("/");
+  //   return;
+  // }
 
   res.render("login");
 });
 
 router.get("/signup", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
+  // if (req.session.loggedIn) {
+  //   // res.redirect("/");
+  //   return;
+  // }
 
   res.render("signup");
 });
