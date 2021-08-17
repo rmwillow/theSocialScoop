@@ -8,7 +8,7 @@ router.get(('/'), (req, res) => {
         attributes: [
             "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count", "createdBy", "airDate",
             [
-                sequelize.literal("(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"),
+                sequelize.literal("(SELECT ROUND(AVG(rating),1) FROM rating WHERE show.id = rating.show_id)"),
                 "rating_average",
             ],
         ],
@@ -39,7 +39,7 @@ router.get(('/:id'), (req, res) => {
         attributes: [
             "id", "title", "overview", "poster_path", "genre", "season_count", "episode_count", "createdBy", "airDate",
             [
-                sequelize.literal("(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"),
+                sequelize.literal("(SELECT ROUND(AVG(rating),1) FROM rating WHERE show.id = rating.show_id)"),
                 "rating_average",
             ],
         ],

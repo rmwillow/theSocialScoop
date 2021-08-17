@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Review } = require("../../models");
+const { Review, Vote, User } = require("../../models");
 //const withAuth = require('../../utils/auth');
 
 // get all reviews
@@ -12,6 +12,21 @@ router.get("/", (req, res) => {
     });
 });
 
+// get all reviews for specific show
+router.get("/:show", (req, res) => {
+  Review.findAll({
+    where: {
+      show_id: req.params.show
+    }
+  })
+    .then((dbReviewData) => res.json(dbReviewData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// create review
 router.post("/", (req, res) => {
   //router.post('/', withAuth, (req, res) => {
   Review.create({
@@ -27,6 +42,7 @@ router.post("/", (req, res) => {
     });
 });
 
+// create upvote
 router.put('/upvote', (req, res) => {
 //router.put('/upvote', withAuth, (req, res) => {
     Review.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, User })
@@ -37,9 +53,10 @@ router.put('/upvote', (req, res) => {
       });
   });
 
+// update review  
 router.put('/:id', (req, res) => {
 //router.put('/:id', withAuth, (req, res) => {
-    Post.update(
+    Review.update(
       {
         review_text: req.body.review_text,
         date_watched: req.body.date_watched
@@ -63,6 +80,7 @@ router.put('/:id', (req, res) => {
       });
   });
 
+// delete review  
 router.delete('/:id', (req, res) => {
 //router.delete("/:id", withAuth, (req, res) => {
   Review.destroy({
