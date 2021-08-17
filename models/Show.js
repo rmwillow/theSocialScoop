@@ -18,7 +18,6 @@ class Show extends Model {
           "title",
           "created_at",
 
-
           [
             sequelize.literal(
               "(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"
@@ -75,8 +74,7 @@ Show.init(
     },
 
     airDate: {
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW,
+      type: DataTypes.DATE,
       allowNull: false,
     }
 },
