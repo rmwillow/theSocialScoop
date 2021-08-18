@@ -24,10 +24,12 @@
 
 <section class="review-section">
     <div class="review-section-container">
+        {{!-- {{#if loggedIn}} --}}
     <h6>LEAVE A REVIEW</h6>
     <form class="review-form">
             <textarea id="review-textarea"class="review-textarea" rows="4"></textarea>
         </form>
+        {{!-- {{/if}} --}}
     {{#each show.reviews}}
     <article class="review-container">
         <div class="card">
@@ -35,7 +37,7 @@
     <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
     <h6 class="card-subtitle review-time">{{created_at}}</h6>
     <p class="review-text">{{review_text}}</p>
-    <div class="like-button"><img id="likeButton{{id}}" src="/img/heart.svg"><span id="likeReviewText{{id}}">Like review</span></div>
+    <div class="like-button"><a id="likeButton{{id}}><img" src="/img/heart.svg"></a><span id="likeReviewText{{id}}">Like review</span></div>
   </div>
 </div>
     </article>
