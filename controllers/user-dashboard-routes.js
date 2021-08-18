@@ -1,36 +1,57 @@
 const router = require("express").Router();
-const { Review } = require("../models");
-const withAuth = require("../utils/auth");
+const { Review, User, Show } = require("../models");
+const sequelize = require('../config/connection');
+// const withAuth = require("../utils/auth");
 
-router.get("/", withAuth, (req, res) => {
-    Review.findAll({
+// withAuth,
+router.get('/', (req, res) => {
+  Review.findAll({
       where: {
-        userId: req.session.userId
-      }
+          user_id: req.session.user_id
+      },
+      attributes: [
+        "id",
+        "review_text",
+        "user_id",
+        "show_id",
+        "date_watched",
+        "created_at",
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE review.id = vote.review_id)'), 'vote_count']
+      ],
+      include: [{
+        model: User,
+        attributes: ["username"],
+      },
+    {
+      model: Show,
+      attributes:["title", "poster_path"]
+    }]
     })
-      .then(dbReviewData => {
-        const reviews = dbReviewData.map((review) => review.get({ plain: true }));
-        
+      .then(reviewData => {
+          // serialize the data before passing to template
+        const reviews = reviewData.map(review => review.get({ plain: true }));
         res.render('dashboard', { 
           reviews,
           loggedIn: true
-        });
+         });
       })
       .catch(err => {
         console.log(err);
-        res.redirect("login");
+        res.status(500).json(err)
       });
-  });
+    });
 
-  router.get("/edit/:review", withAuth, (req, res) => {
+  // withAuth,
+
+  router.get("/edit/:review", (req, res) => {
     Post.findByPk(req.params.id)
       .then(dbReviewData => {
         if (dbReviewData) {
           const reviews = dbReviewData.get({ plain: true });
           
-          res.render("edit-review", {
-            layout: "dashboard",
-            reviews
+          res.render("dashboard", {
+            reviews, 
+            loggedIn: true
           });
         } else {
           res.status(404).end();

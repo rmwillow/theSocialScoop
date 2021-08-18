@@ -247,20 +247,57 @@ nav {
     padding-top: .5rem;
 }
 
-.like-button {
+.like-button, .like-button-unliked {
     padding-bottom: .5rem;
     border-bottom: .1rem solid #afb4b4;
 }
 
-.like-button span {
+.like-button span, .like-button-unliked span {
     padding-left: .5rem;
     font-size: .8rem;
     font-weight: 500;
 }
 
 .like-button img {
-    filter: invert(76%) sepia(9%) saturate(86%) hue-rotate(131deg) brightness(92%) contrast(94%);
+  filter: invert(40%) sepia(97%) saturate(878%) hue-rotate(328deg) brightness(78%) contrast(92%);
 }
+
+.like-button-unliked img {
+  filter: invert(76%) sepia(9%) saturate(86%) hue-rotate(131deg) brightness(92%) contrast(94%);
+}
+
+
+/* USER DASHBOARD STYLES */
+.user-dashboard {
+  padding-top: 2rem;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-headline {
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.card-top-row {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.card-top-row h6 {
+  font-size: .9rem;
+  float: right;
+  text-decoration: underline;
+}
+
+.dashboard-reviews-container {
+  width: 75%;
+}
+
 
 
 /*!

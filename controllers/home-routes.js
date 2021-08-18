@@ -13,7 +13,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// get all reviews for homepage
+// get all shows for homepage
 router.get("/", (req, res) => {
   console.log(req.session)
   Show.findAll({
