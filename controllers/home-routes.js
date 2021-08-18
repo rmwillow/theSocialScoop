@@ -201,12 +201,12 @@ router.get("/shows/:id", (req, res) => {
       "season_count",
       "episode_count",
       "apiId",
-      [
-        sequelize.literal(
-          "(SELECT ROUND(AVG(rating),1) FROM rating WHERE show.id = rating.show_id)"
-        ),
-        "rating_average",
-      ],
+      // [
+      // //   sequelize.literal(
+      // //     "(SELECT ROUND(AVG(rating),1) FROM rating WHERE show.id = rating.show_id)"
+      // //   ),
+      // //   "rating_average",
+      // // ],
     ],
     include: [
       {
@@ -220,19 +220,18 @@ router.get("/shows/:id", (req, res) => {
           "created_at",
           // [
           //   sequelize.literal(
-          //     '(SELECT COUNT(*) FROM vote AS review WHERE review.id = vote.review_id)'), 'vote_count',
+          //     '(SELECT COUNT(*) FROM vote AS voted_reviews WHERE vote.review_id = review.id)'), 'vote_count',
           // ], // this needs to be fixed
         ],
-        include: [
+        include:
           {
             model: User,
             attributes: ["username"],
+            include: {
+              model: Vote,
+              attributes: []
+            }
           },
-          {
-            model: Vote,
-            attributes: ["user_id"],
-          },
-        ],
       },
     ],
   })
