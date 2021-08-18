@@ -230,7 +230,6 @@ router.get("/shows/:id", (req, res) => {
     });
 });
 
-
 // Login, Logout 7 Signup routes
 router.get("/login", (req, res) => {
   // if (req.session.loggedIn) {
