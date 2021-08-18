@@ -234,11 +234,22 @@ nav {
     font-size: .9rem;
     font-weight: 300;
     padding-top: .5rem;
-    padding-bottom: 1rem;
+}
+
+.like-button {
+    padding-bottom: .5rem;
     border-bottom: .1rem solid #afb4b4;
 }
 
+.like-button span {
+    padding-left: .5rem;
+    font-size: .8rem;
+    font-weight: 500;
+}
 
+.like-button img {
+    filter: invert(76%) sepia(9%) saturate(86%) hue-rotate(131deg) brightness(92%) contrast(94%);
+}
 
 
 /*!
