@@ -54,7 +54,8 @@ router.get("/", (req, res) => {
       const shows = showData.map((post) => post.get({ plain: true }));
       res.render("homepage", { 
       shows,
-      loggedIn: req.session.loggedIn });
+      loggedIn: req.session.loggedIn,
+      id: req.session.user_id });
     })
     .catch((err) => {
       console.log(err);

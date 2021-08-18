@@ -288,14 +288,32 @@ nav {
   justify-content: space-between;
 }
 
-.card-top-row h6 {
+.card-top-row button {
   font-size: .9rem;
   float: right;
   text-decoration: underline;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  color: #afb4b4;
 }
 
 .dashboard-reviews-container {
   width: 75%;
+}
+
+/* MODAL STYLES */
+.modal {
+  color: #afb4b4;
+}
+.modal-header, .modal-body, .modal-footer {
+  background-color:  rgba(35, 51, 61, 1);
+  color: #afb4b4;
+  border: none;
+}
+
+.modal-buttons-container {
+  float: right;
+  padding-top: 2rem;
 }
 
 

@@ -9,7 +9,7 @@
           <div class="card-body">
             <div class="card-top-row">
             <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
-            <h6><a>Edit Review</a></h6>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#editReviewModal{{id}}">Edit Review</button>
             </div>
             <h6 class="card-subtitle review-time">{{created_at}}</h6>
             <p class="review-text">{{review_text}}</p>
@@ -34,49 +34,29 @@
     {{/each}}
   </div>
 </section>
-{{!-- EDIT REVIEW MODAL --}}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{!-- EDIT MODAL --}}
+{{#each reviews}}
+<div class="modal fade" id="editReviewModal{{id}}" tabindex="-1" aria-labelledby="editReview" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title">Edit</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <form class="edit-review-form">
+            <textarea name="updated-review-text" class="review-textarea" rows="4">{{review_text}}</textarea>
+            <div class="modal-buttons-container">
+            <button type="submit" class="btn btn-primary edit-submit-button">Save changes</button>
+            <button type="button" class="btn btn-danger delete-review-button" data-bs-dismiss="modal">Delete review</button>
+            </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
+{{/each}}
 
-{{!-- <section>
-  <h2>Create New Review</h2>
-<form class="new-review-form">
-    <div>
-      <label for="review-url">Link</label>
-      <input id="review-url" name="review-url" />
-    </div>
 
-    <button type="submit" class="btn">Create Review</button>
-  </form>
-</section>
-
-{{#if review.length}}
-<section>
-  <h2>Your Posts</h2>
-  <ol>
-    {{#each reviews as |review|}}
-    <li>
-      {{> review-info review}}
-      <a href="/dashboard/edit/{{review.id}}" class="edit-link">Edit Review</a>
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
-
-<script src="/javascript/create-review.js"></script> --}}
+<script src="/javascript/edit-review.js"></script>
+<script src="/javascript/delete-review.js"></script>

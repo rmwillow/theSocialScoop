@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 // const withAuth = require("../utils/auth");
 
 // withAuth,
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   Review.findAll({
       where: {
           user_id: req.session.user_id
@@ -43,24 +43,24 @@ router.get('/', (req, res) => {
 
   // withAuth,
 
-  router.get("/edit/:review", (req, res) => {
-    Post.findByPk(req.params.id)
-      .then(dbReviewData => {
-        if (dbReviewData) {
-          const reviews = dbReviewData.get({ plain: true });
+  // router.get("/edit/:review", (req, res) => {
+  //   Post.findByPk(req.params.id)
+  //     .then(dbReviewData => {
+  //       if (dbReviewData) {
+  //         const reviews = dbReviewData.get({ plain: true });
           
-          res.render("dashboard", {
-            reviews, 
-            loggedIn: true
-          });
-        } else {
-          res.status(404).end();
-        }
-      })
-      .catch(err => {
-        res.status(500).json(err);
-      });
-  });
+  //         res.render("dashboard", {
+  //           reviews, 
+  //           loggedIn: true
+  //         });
+  //       } else {
+  //         res.status(404).end();
+  //       }
+  //     })
+  //     .catch(err => {
+  //       res.status(500).json(err);
+  //     });
+  // });
   
 
 module.exports = router;
