@@ -140,11 +140,21 @@ router.get("/search/:term", (req, res) => {
           "show_id",
           "date_watched",
           "created_at",
+          // [
+          //   sequelize.literal(
+          //     '(SELECT COUNT(*) FROM vote AS review WHERE review.id = vote.review_id)'), 'vote_count',
+          // ], // this needs to be fixed
         ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        include: [
+          {
+            model: User,
+            attributes: ["username"],
+          },
+          {
+            model: Vote,
+            attributes: ["user_id"],
+          },
+        ],
       },
     ],
   })
@@ -208,19 +218,30 @@ router.get("/shows/:id", (req, res) => {
           "show_id",
           "date_watched",
           "created_at",
+          // [
+          //   sequelize.literal(
+          //     '(SELECT COUNT(*) FROM vote AS review WHERE review.id = vote.review_id)'), 'vote_count',
+          // ], // this needs to be fixed
         ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        include: [
+          {
+            model: User,
+            attributes: ["username"],
+          },
+          {
+            model: Vote,
+            attributes: ["user_id"],
+          },
+        ],
       },
     ],
   })
     .then((showData) => {
       if (!showData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: "No show found with this id!" });
         return;
       }
+      console.log(showData);
       const show = showData.get({ plain: true });
       res.render("single-page", { show });
     })
@@ -229,7 +250,6 @@ router.get("/shows/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 // Login, Logout 7 Signup routes
 router.get("/login", (req, res) => {

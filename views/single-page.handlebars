@@ -11,7 +11,15 @@
 <div class="col">
 <h6>Rate</h6>
 <div id="rater">
-    (looking into a js library to use here ??)</div>
+    <select class="star-rating">
+    <option value=""></option>
+    <option value="5"></option>
+    <option value="4"></option>
+    <option value="3"></option>
+    <option value="2"></option>
+    <option value="1"></option>
+</select>
+</div>
 <h6>Genre <span class="badge bg-secondary"><a href="#">{{show.genre}}</a></span></h6>
 <h6>Seasons {{show.season_count}}</h6>
 <h6>Episodes {{show.episode_count}}</h6>
@@ -35,5 +43,9 @@
 {{/each}}
 </section>
 
-<link href="dist/star-rating.css" rel="stylesheet" />
-<script src="dist/star-rating.min.js"></script>
+<script src="/javascript/star-rating.js"></script>
+<script src="/javascript/rate-show.js"></script>
+{{!-- <script src="/javascript/create-review.js"></script>
+<script src="/javascript/delete-review.js"></script>
+<script src="/javascript/edit-review.js"></script>
+<script src="/javascript/upvote.js"></script> --}}
