@@ -1,6 +1,6 @@
 /* MAIN.HANDLEBARS STYLES */
 * {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
 }
 html,
@@ -26,11 +26,11 @@ nav {
 }
 .navbar-brand {
   font-weight: 300;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-left: 2rem;
   margin-bottom: 1rem;
   margin-top: 0.5rem;
-  font-size: 2rem;
+  font-size: 1.75rem;
   border: 0.2rem solid rgb(250, 174, 174);
   border-radius: 1rem;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
@@ -135,10 +135,18 @@ nav {
     justify-content: center;
 }
 
-.show-info-section p, .show-info-section h1, .show-title-span, .show-info-section h6, .show-info-section div, .show-info-section a {
+.show-info-section p, .show-info-section h1, .show-title-span {
     font-family: 'Libre Baskerville', serif;
     color: #afb4b4;
     text-decoration: none;
+}
+
+.show-info-section h6, .show-info-section div, .show-info-section a {
+    font-family: "Poppins", sans-serif;
+    color: #afb4b4;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: .9rem;
 }
 
 .show-info-section h1, .show-title-span {
@@ -146,7 +154,7 @@ nav {
 }
 
 .badge {
-    font-weight: 400;
+    font-weight: 300;
     
     margin-left: 1rem
 }
@@ -155,10 +163,16 @@ nav {
     font-size: .8rem;
 }
 
-.review-button {
-    
-    border-color: rgba(35, 51, 61, 1);
+.show-info-container {
+    border-color: #afb4b4;
     border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.review-button {
+   margin-top: 1rem;
+    border-color: #afb4b4;
+    border-radius: .33rem;
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -167,22 +181,61 @@ nav {
    border-color: rgba(35, 51, 61, 1);
 }
 
+.review-section {
+    padding-top: 5rem;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.review-section-container {
+    width: 60%
+}
 
 .review-textarea {
-    width: 60%;
+    background-color:  rgba(35, 51, 61, 1);
+    color: #afb4b4;
+    width: 100%;
+    border-radius: .33rem;
+}
 
+.card-body, .card {
+    margin-top: .5rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding-bottom: 0;
 }
 
 .review-section {
-    padding-left: 5rem;
-    padding-top: 5rem;
+    font-family: 'Poppins', serif;
+    color: #afb4b4;
 }
 
-.review-section h2, .review-section a{
+.review-section h5 {
+    font-size: .9rem;
+    font-weight: 500;
+
+}
+
+.review-username span, .review-time {
+    font-size: .8rem;
+    font-weight: 300;
+    padding-right: .4rem;
+}
+
+.review-time {
+    padding-bottom: .5rem;
+}
+
+.review-text {
     font-family: 'Libre Baskerville', serif;
-    color: #afb4b4;
-    text-decoration: none;
-    text-decoration-thickness: 0;
+    font-size: .9rem;
+    font-weight: 300;
+    padding-top: .5rem;
+    padding-bottom: 1rem;
+    border-bottom: .1rem solid #afb4b4;
 }
 
 
