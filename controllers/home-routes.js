@@ -257,11 +257,10 @@ router.get("/shows/:id", (req, res) => {
         res.status(404).json({ message: "No show found with this id!" });
         return;
       }
-      res.json(showData);
-      // const show = showData.get({ plain: true });
-      // res.render("single-page", {
-      //   show,
-      //   loggedIn: req.session.loggedIn });
+      const show = showData.get({ plain: true });
+      res.render("single-page", {
+        show,
+        loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
