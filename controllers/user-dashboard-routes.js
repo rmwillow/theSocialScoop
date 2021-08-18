@@ -11,9 +11,9 @@ router.get("/", withAuth, (req, res) => {
       .then(dbReviewData => {
         const reviews = dbReviewData.map((review) => review.get({ plain: true }));
         
-        res.render("all-review-admin", {
-          layout: "dashboard",
-          reviews
+        res.render('dashboard', { 
+          reviews,
+          loggedIn: true
         });
       })
       .catch(err => {
@@ -22,12 +22,6 @@ router.get("/", withAuth, (req, res) => {
       });
   });
 
-  router.get("/newReview", withAuth, (req, res) => {
-    res.render("new-review", {
-      layout: "dashboard"
-    });
-  });
-  
   router.get("/edit/:review", withAuth, (req, res) => {
     Post.findByPk(req.params.id)
       .then(dbReviewData => {

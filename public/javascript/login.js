@@ -17,7 +17,7 @@ async function loginHandler(event) {
         if (response.ok) {
             document.location.replace('/');
         } else {
-            alert(reponse.statusText);
+            alert(response.statusText);
         }
     }
 }

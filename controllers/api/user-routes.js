@@ -101,13 +101,15 @@ router.post('/login', (req, res) => {
 //POST LOGOUT ROUTE
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
-        });
-    } else {
-        res.status(404).end();
+      req.session.destroy(() => {
+        res.status(204).end();
+        res.redirect('/')
+      });
     }
-})
+    else {
+      res.status(404).end();
+    }
+  });
 
 //PUT ROUTE
 router.put('/:id', (req, res) => {
