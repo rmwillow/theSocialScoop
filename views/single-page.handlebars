@@ -37,7 +37,11 @@
     <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
     <h6 class="card-subtitle review-time">{{created_at}}</h6>
     <p class="review-text">{{review_text}}</p>
-    <div class="like-button"><a id="likeButton{{id}}><img" src="/img/heart.svg"></a><span id="likeReviewText{{id}}">Like review</span></div>
+    {{!-- {{#if REVIEW HAS BEEN LIKED}} --}}
+    {{!-- <div class="like-button-liked"><a id="likeButton{{id}}><img" src="/img/heart.svg"></a><span id="likeReviewText{{id}}">Liked</span></div> --}}
+    {{!-- {{#else}} --}}
+    <div class="like-button-unliked"><a id="likeButton{{id}}><img" src="/img/heart.svg"></a><span id="likeReviewText{{id}}">Like review</span></div>
+    {{!-- {{/if}} --}}
   </div>
 </div>
     </article>
