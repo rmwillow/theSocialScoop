@@ -6,16 +6,16 @@
     <form class="login-form">
         <div class="input-group">
   <span class="input-group-text"><img src="/img/user-icon.svg"></span>
-  <input type="text" class="form-control" placeholder="username" aria-label="Username" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" id="username-login" placeholder="username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 <div class="input-group">
   <span class="input-group-text"><img src="/img/lock.svg"></span>
-  <input type="password" class="form-control" placeholder="password" aria-label="Password" aria-describedby="basic-addon1">
+  <input type="password" id="password-login" class="form-control" placeholder="password" aria-label="Password" aria-describedby="basic-addon1">
 </div>
 <div class="d-grid gap-2">
   <button class="btn btn-primary login-submit-button" type="submit">SUBMIT</button>
     </form>
-    </form>
+    
 
 </section>
 {{!-- DIVIDER --}}
@@ -25,18 +25,18 @@
 {{!-- SIGNUP FORM --}}
 <section class="col signup-section">
     <h1 class="neon-text">sign up</h1>
-    <form class="login-form">
+    <form class="login-form" id="signup-form">
         <div class="input-group">
   <span class="input-group-text"><img src="/img/envelope.svg"></span>
-  <input type="text" class="form-control" placeholder="user@email.com" aria-label="Email" aria-describedby="basic-addon1">
+  <input type="text" id="email-signup" class="form-control" placeholder="user@email.com" aria-label="Email" aria-describedby="basic-addon1">
 </div>
         <div class="input-group">
   <span class="input-group-text"><img src="/img/user-icon.svg"></span>
-  <input type="text" class="form-control" placeholder="username" aria-label="Username" aria-describedby="basic-addon1">
+  <input type="text" id="username-signup" class="form-control" placeholder="username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 <div class="input-group">
   <span class="input-group-text"><img src="/img/lock.svg"></span>
-  <input type="password" class="form-control" placeholder="password" aria-label="Password" aria-describedby="basic-addon1">
+  <input type="password" id="password-signup" class="form-control" placeholder="password" aria-label="Password" aria-describedby="basic-addon1">
 </div>
 <div class="d-grid gap-2">
   <button class="btn btn-primary signup-submit-button" type="submit">SUBMIT</button>
@@ -45,3 +45,4 @@
 </section>
 </div>
 </div>
+<script src="/javascript/login.js"></script>

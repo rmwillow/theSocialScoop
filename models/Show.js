@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, Sequelize } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // create Show model
@@ -17,6 +17,7 @@ class Show extends Model {
           "id",
           "title",
           "created_at",
+
           [
             sequelize.literal(
               "(SELECT AVG(rating) FROM rating WHERE show.id = rating.show_id)"
@@ -61,15 +62,25 @@ Show.init(
     episode_count: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    }, 
+    },
     apiId: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+
+    createdBy: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    airDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
     }
+},
     // add rating value HERE once rating model has been built
 
     // year? or last air date? 
-  },
   {
     sequelize,
     freezeTableName: true,
