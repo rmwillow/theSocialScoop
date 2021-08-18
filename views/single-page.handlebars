@@ -8,7 +8,7 @@
 <h1>{{show.title}}   <span class="show-title-span">2021 | </span><span class="show-title-span">Created By</span></h1>
 <p>{{show.overview}}</p>
 </div>
-<div class="col">
+<div class="col show-info-container">
 <h6>Rate</h6>
 <div id="rater">
 (looking into a js library to use here ??)</div>
@@ -17,22 +17,37 @@
 <h6>Episodes {{show.episode_count}}</h6>
 <h6>More At <span class="badge bg-secondary"><a href="https://www.themoviedb.org/tv/{{show.apiId}}">tmdb</a></span></h6>
 <div class="d-grid gap-2">
-  <h6 class="btn btn-primary review-button"><a href="#review-section">Leave a Review</h6>
+  <h6 class="btn btn-primary review-button"><a href="#review-textarea">LEAVE A REVIEW</a></h6>
   </div>
 </div>
 </div>
 </section>
 
-<section class="review-section" id="review-section">
-    <h2>Leave a Review</h2>
+<section class="review-section">
+    <div class="review-section-container">
+        {{!-- {{#if loggedIn}} --}}
+    <h6>LEAVE A REVIEW</h6>
     <form class="review-form">
-            <textarea class="review-textarea"></textarea>
+            <textarea id="review-textarea"class="review-textarea" rows="4"></textarea>
         </form>
-    {{#each show.review}}
+        {{!-- {{/if}} --}}
+    {{#each show.reviews}}
     <article class="review-container">
-        
+        <div class="card">
+  <div class="card-body">
+    <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
+    <h6 class="card-subtitle review-time">{{created_at}}</h6>
+    <p class="review-text">{{review_text}}</p>
+    {{!-- {{#if REVIEW HAS BEEN LIKED}} --}}
+    {{!-- <div class="like-button-liked"><a id="likeButton{{id}}><img" src="/img/heart.svg"></a><span id="likeReviewText{{id}}">Liked</span></div> --}}
+    {{!-- {{#else}} --}}
+    <div class="like-button-unliked"><a id="likeButton{{id}}><img" src="/img/heart.svg"></a><span id="likeReviewText{{id}}">Like review</span></div>
+    {{!-- {{/if}} --}}
+  </div>
+</div>
     </article>
 {{/each}}
+</div>
 </section>
 
 <link href="dist/star-rating.css" rel="stylesheet" />
