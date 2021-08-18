@@ -1,27 +1,62 @@
-<section>
-  <h2>Create New Review</h2>
-<form class="new-review-form">
-    <div>
-      <label for="review-url">Link</label>
-      <input id="review-url" name="review-url" />
-    </div>
-
-    <button type="submit" class="btn">Create Review</button>
-  </form>
-</section>
-
-{{#if review.length}}
-<section>
-  <h2>Your Posts</h2>
-  <ol>
-    {{#each reviews as |review|}}
-    <li>
-      {{> review-info review}}
-      <a href="/dashboard/edit/{{review.id}}" class="edit-link">Edit Review</a>
-    </li>
+<section class="user-dashboard review-section">
+  <div class="dashboard-reviews-container">
+    <h6 class="dashboard-headline">
+      Your Reviews
+    </h6>
+    {{#each reviews}}
+      <article class="review-container">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-top-row">
+            <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#editReviewModal{{id}}">Edit Review</button>
+            </div>
+            <h6 class="card-subtitle review-time">{{created_at}}</h6>
+            <p class="review-text">{{review_text}}</p>
+            {{#if vote_count}}
+              <div class="like-button">
+                <a id="likeButton{{id}}">
+                  <img src="/img/heart.svg">
+                  </a>
+                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
+                  </div>
+            {{else}}
+              <div class="like-button-unliked">
+                <a id="likeButton{{id}}">
+                  <img src="/img/heart.svg">
+                  </a>
+                  <span id="likeReviewText{{id}}">Like review</span>
+                  </div>
+            {{/if}}
+          </div>
+        </div>
+      </article>
     {{/each}}
-  </ol>
+  </div>
 </section>
-{{/if}}
+{{!-- EDIT MODAL --}}
+{{#each reviews}}
+<div class="modal fade" id="editReviewModal{{id}}" tabindex="-1" aria-labelledby="editReview" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="edit-review-form">
+            <textarea name="updated-review-text" class="review-textarea" rows="4">{{review_text}}</textarea>
+            <div class="modal-buttons-container">
+            <button type="submit" class="btn btn-primary edit-submit-button">Save changes</button>
+            <button type="button" class="btn btn-danger delete-review-button" data-bs-dismiss="modal">Delete review</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
 
-<script src="/javascript/create-review.js"></script>
+
+<script src="/javascript/edit-review.js"></script>
+<script src="/javascript/delete-review.js"></script>

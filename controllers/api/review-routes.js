@@ -1,10 +1,29 @@
 const router = require("express").Router();
-const { Review, Vote, User } = require("../../models");
+const { Review, Vote, User, Show } = require("../../models");
+const sequelize = require('../../config/connection');
 //const withAuth = require('../../utils/auth');
 
 // get all reviews
 router.get("/", (req, res) => {
-  Review.findAll()
+  Review.findAll({
+    attributes: [
+      "id",
+      "review_text",
+      "user_id",
+      "show_id",
+      "date_watched",
+      "created_at",
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE review.id = vote.review_id)'), 'vote_count']
+    ],
+    include: [{
+      model: User,
+      attributes: ["username"],
+    },
+  {
+    model: Show,
+    attributes:["title", "poster_path"]
+  }]
+  })
     .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
       console.log(err);
@@ -16,8 +35,8 @@ router.get("/", (req, res) => {
 router.get("/:show", (req, res) => {
   Review.findAll({
     where: {
-      show_id: req.params.show
-    }
+      show_id: req.params.show,
+    },
   })
     .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
@@ -33,7 +52,7 @@ router.post("/", (req, res) => {
     review_text: req.body.review_text,
     user_id: req.session.user_id,
     show_id: req.body.show_id,
-    date_watched: req.body.date_watched,
+    date_watched: req.body.date_watched
   })
     .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
@@ -43,46 +62,46 @@ router.post("/", (req, res) => {
 });
 
 // create upvote
-router.put('/upvote', (req, res) => {
-//router.put('/upvote', withAuth, (req, res) => {
-    Review.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, User })
-      .then(updatedVoteData => res.json(updatedVoteData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+router.put("/upvote", (req, res) => {
+  //router.put('/upvote', withAuth, (req, res) => {
+  Review.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, User })
+    .then((updatedVoteData) => res.json(updatedVoteData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
-// update review  
-router.put('/:id', (req, res) => {
-//router.put('/:id', withAuth, (req, res) => {
-    Review.update(
-      {
-        review_text: req.body.review_text,
-        date_watched: req.body.date_watched
+// update review
+router.put("/:id", (req, res) => {
+  //router.put('/:id', withAuth, (req, res) => {
+  Review.update(
+    {
+      review_text: req.body.review_text,
+      date_watched: req.body.date_watched,
+    },
+    {
+      where: {
+        id: req.params.id,
       },
-      {
-        where: {
-          id: req.params.id
-        }
+    }
+  )
+    .then((dbReviewData) => {
+      if (!dbReviewData) {
+        res.status(404).json({ message: "No review found with this id" });
+        return;
       }
-    )
-      .then(dbReviewData => {
-        if (!dbReviewData) {
-          res.status(404).json({ message: 'No review found with this id' });
-          return;
-        }
-        res.json(dbReviewData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
+      res.json(dbReviewData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
-// delete review  
-router.delete('/:id', (req, res) => {
-//router.delete("/:id", withAuth, (req, res) => {
+// delete review
+router.delete("/:id", (req, res) => {
+  //router.delete("/:id", withAuth, (req, res) => {
   Review.destroy({
     where: {
       id: req.params.id,

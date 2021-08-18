@@ -2,16 +2,17 @@ async function reviewFormHandler(event) {
   event.preventDefault();
 
   const review_text = document
-    .querySelector('textarea[name="review-text"]')
+    .querySelector('textarea[name="review-textarea"]')
     .value.trim();
-  const date_watched = document.querySelector(
-    'input[name="date-watched"]'
-  ).value;
+  const date_watched = moment();
+  // = document.querySelector(
+  //   'input[name="date-watched"]'
+  // ).value;
   const show_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
 
-  const response = await fetch(`/api/reviews`, {
+  const response = await fetch(`/api/reviews/`, {
     method: "POST",
     body: JSON.stringify({
       review_text,

@@ -12,7 +12,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// get all reviews for homepage
+// get all shows for homepage
 router.get("/", (req, res) => {
   console.log(req.session);
   Show.findAll({
@@ -51,10 +51,11 @@ router.get("/", (req, res) => {
   })
     .then((showData) => {
       const shows = showData.map((post) => post.get({ plain: true }));
-      res.render("homepage", {
-        shows,
-        loggedIn: req.session.loggedIn,
-      });
+
+      res.render("homepage", { 
+      shows,
+      loggedIn: req.session.loggedIn,
+      id: req.session.user_id });
     })
     .catch((err) => {
       console.log(err);
@@ -110,7 +111,7 @@ router.get("/sort/:type", (req, res) => {
       res.render("homepage", {
         shows,
         loggedIn: req.session.loggedIn,
-      });
+        id: req.session.user_id });
     })
     .catch((err) => {
       console.log(err);
@@ -177,7 +178,9 @@ router.get("/search/:term", (req, res) => {
       res.render("homepage", {
         shows,
         loggedIn: req.session.loggedIn,
-      });
+
+        id: req.session.user_id
+       });
     })
     .catch((err) => {
       console.log(err);
@@ -260,20 +263,14 @@ router.get("/shows/:id", (req, res) => {
       const show = showData.get({ plain: true });
       res.render("single-page", {
         show,
-        loggedIn: req.session.loggedIn });
+        loggedIn: req.session.loggedIn,
+        id: req.session.user_id
+       });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
-// router.get("/signup", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect("/");
-//     return;
-//   }
-//   res.render('login');
-// });
 
 module.exports = router;

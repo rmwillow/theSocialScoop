@@ -32,7 +32,7 @@
       <ul class="navbar-nav">
         {{#if loggedIn}}
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/dashboard">DASHBOARD</a>
+          <a class="nav-link" aria-current="page" href="/dashboard/{{id}}">DASHBOARD</a>
         </li>
          <li class="nav-item">
           <a class="nav-link" id="logout-link" href="/">LOG OUT</a>
@@ -58,5 +58,6 @@
     <script src="/javascript/logout.js"></script>
     {{/if}}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   </body>
 </html>
