@@ -3,8 +3,19 @@ const { User, Rating, Show, Review, Vote } = require("../models");
 const sequelize = require("../config/connection");
 const { Op } = require("sequelize");
 
+
+// GET LOGIN PAGE
+router.get('/login', (req, res) => {
+  if(req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
+
 // get all reviews for homepage
 router.get("/", (req, res) => {
+  console.log(req.session)
   Show.findAll({
     attributes: [
       "id",
@@ -41,7 +52,9 @@ router.get("/", (req, res) => {
   })
     .then((showData) => {
       const shows = showData.map((post) => post.get({ plain: true }));
-      res.render("homepage", { shows });
+      res.render("homepage", { 
+      shows,
+      loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
@@ -94,7 +107,9 @@ router.get("/sort/:type", (req, res) => {
   })
     .then((showData) => {
       const shows = showData.map((post) => post.get({ plain: true }));
-      res.render("homepage", { shows });
+      res.render("homepage", { 
+        shows,
+        loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
@@ -156,25 +171,15 @@ router.get("/search/:term", (req, res) => {
         return;
       }
       const shows = showData.map((post) => post.get({ plain: true }));
-      res.render("homepage", { shows });
+      res.render("homepage", { 
+        shows,
+        loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
-//   Review.findAll({
-//     include: [User],
-//   })
-//     .then((dbReviewData) => {
-//       const reviews = dbReviewData.map((review) => review.get({ plain: true }));
-
-//       res.render("all-reviews", { reviews });
-//     })
-//     .catch((err) => {
-//       res.status(500).json(err);
-//     });
 
 // single-page routes
 router.get("/shows/:id", (req, res) => {
@@ -222,7 +227,9 @@ router.get("/shows/:id", (req, res) => {
         return;
       }
       const show = showData.get({ plain: true });
-      res.render("single-page", { show });
+      res.render("single-page", { 
+        show,
+        loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
@@ -230,23 +237,12 @@ router.get("/shows/:id", (req, res) => {
     });
 });
 
-// Login, Logout 7 Signup routes
-router.get("/login", (req, res) => {
-  // if (req.session.loggedIn) {
-  //   // res.redirect("/");
-  //   return;
-  // }
-
-  res.render("login");
-});
-
-router.get("/signup", (req, res) => {
-  // if (req.session.loggedIn) {
-  //   // res.redirect("/");
-  //   return;
-  // }
-
-  res.render("signup");
-});
+// router.get("/signup", (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect("/");
+//     return;
+//   }
+//   res.render('login');
+// });
 
 module.exports = router;
