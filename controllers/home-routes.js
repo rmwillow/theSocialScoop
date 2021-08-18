@@ -3,19 +3,18 @@ const { User, Rating, Show, Review, Vote } = require("../models");
 const sequelize = require("../config/connection");
 const { Op } = require("sequelize");
 
-
 // GET LOGIN PAGE
-router.get('/login', (req, res) => {
-  if(req.session.loggedIn) {
-    res.redirect('/');
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
     return;
   }
-  res.render('login');
+  res.render("login");
 });
 
 // get all reviews for homepage
 router.get("/", (req, res) => {
-  console.log(req.session)
+  console.log(req.session);
   Show.findAll({
     attributes: [
       "id",
@@ -52,9 +51,10 @@ router.get("/", (req, res) => {
   })
     .then((showData) => {
       const shows = showData.map((post) => post.get({ plain: true }));
-      res.render("homepage", { 
-      shows,
-      loggedIn: req.session.loggedIn });
+      res.render("homepage", {
+        shows,
+        loggedIn: req.session.loggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -107,9 +107,10 @@ router.get("/sort/:type", (req, res) => {
   })
     .then((showData) => {
       const shows = showData.map((post) => post.get({ plain: true }));
-      res.render("homepage", { 
+      res.render("homepage", {
         shows,
-        loggedIn: req.session.loggedIn });
+        loggedIn: req.session.loggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -156,10 +157,12 @@ router.get("/search/:term", (req, res) => {
           "date_watched",
           "created_at",
         ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        include: [
+          {
+            model: User,
+            attributes: ["username"],
+          },
+        ],
       },
     ],
   })
@@ -171,9 +174,10 @@ router.get("/search/:term", (req, res) => {
         return;
       }
       const shows = showData.map((post) => post.get({ plain: true }));
-      res.render("homepage", { 
+      res.render("homepage", {
         shows,
-        loggedIn: req.session.loggedIn });
+        loggedIn: req.session.loggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -183,6 +187,13 @@ router.get("/search/:term", (req, res) => {
 
 // single-page routes
 router.get("/shows/:id", (req, res) => {
+  let user_id;
+  if(!req.session.user_id) {
+    user_id = 6;
+  } else {
+    user_id = req.session.user_id;
+  }
+
   Show.findOne({
     where: {
       id: req.params.id,
@@ -202,6 +213,12 @@ router.get("/shows/:id", (req, res) => {
         ),
         "rating_average",
       ],
+      [
+        sequelize.literal(
+          `(SELECT ROUND(AVG(COALESCE(rating, 0)),1) FROM rating AS show_ratings WHERE show_ratings.show_id = show.id AND show_ratings.user_id = ${user_id})`
+        ),
+        "active_user_rating",
+      ],
     ],
     include: [
       {
@@ -213,21 +230,35 @@ router.get("/shows/:id", (req, res) => {
           "show_id",
           "date_watched",
           "created_at",
+          [
+            sequelize.literal(
+              "(SELECT COUNT(*) FROM vote AS voted_reviews WHERE voted_reviews.review_id = reviews.id)"
+            ),
+            "vote_count",
+          ],
+          [
+            sequelize.literal(
+              `(SELECT COUNT(*) FROM vote AS voted_reviews WHERE voted_reviews.review_id = reviews.id AND voted_reviews.user_id = ${user_id})`
+            ),
+            "active_user_vote",
+          ],
         ],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
+        include: [
+          {
+            model: User,
+            attributes: ["username"],
+          }
+        ],
       },
     ],
   })
     .then((showData) => {
       if (!showData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: "No show found with this id!" });
         return;
       }
       const show = showData.get({ plain: true });
-      res.render("single-page", { 
+      res.render("single-page", {
         show,
         loggedIn: req.session.loggedIn });
     })

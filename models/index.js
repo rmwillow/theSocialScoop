@@ -41,7 +41,7 @@ User.hasMany(Vote, {
 });
 
 Review.hasMany(Vote, {
-  foreignKey: 'post_id'
+  foreignKey: 'review_id'
 });
 
 Show.hasMany(Review, {
@@ -52,27 +52,39 @@ Review.belongsTo(Show, {
   foreignKey: "show_id"
 });
 
-Review.belongsToMany(Show, {
+Show.hasMany(Rating, {
+  foreignKey: 'show_id'
+});
+
+User.hasMany(Rating, {
+  foreignKey: 'user_id'
+});
+
+Rating.belongsTo(Show, {
+  foreignKey: 'show_id'
+});
+
+Rating.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+User.belongsToMany(Show, {
   through: Rating,
   as: 'show_ratings',
-  foreignKey: 'review_id',
+  foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Show.belongsToMany(Review, {
+Show.belongsToMany(User, {
   through: Rating,
   as: 'show_ratings',
   foreignKey: 'show_id',
   onDelete: 'SET NULL'
 });
 
-Rating.belongsTo(Review, {
-  foreignKey: 'review_id'
-});
-
-Rating.belongsTo(Show, {
-  foreignKey: 'show_id'
-});
+// Rating.belongsTo(Review, {
+//   foreignKey: 'review_id'
+// });
 
 
 module.exports = { User, Show, Review, Rating, Vote };
