@@ -81,6 +81,11 @@ nav {
   width: 30rem;
 }
 
+.login-page-container h1 {
+  font-weight: 300;
+  padding-bottom: .5rem;
+}
+
 .d-flex {
   justify-content: center;
   color: #85a8a2;
@@ -102,8 +107,14 @@ nav {
 }
 
 .btn-primary {
-  background-color: #85a8a2;
-  border-color: #85a8a2;
+  border-color: #afb4b4;
+    border-radius: .33rem;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.btn-primary:hover {
+  background-color: rgba(35, 51, 61, 1);;
+   border-color: rgba(35, 51, 61, 1);
 }
 
 
