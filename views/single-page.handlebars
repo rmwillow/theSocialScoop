@@ -28,7 +28,8 @@
         {{!-- {{#if loggedIn}} --}}
     <h6>LEAVE A REVIEW</h6>
     <form class="review-form">
-            <textarea id="review-textarea"class="review-textarea" rows="4"></textarea>
+            <textarea name="review-textarea" class="review-textarea" rows="4"></textarea>
+            <button type="submit" class="btn btn-primary review-button">Submit</button>
         </form>
         {{!-- {{/if}} --}}
     {{#each show.reviews}}
@@ -49,6 +50,7 @@
 {{/each}}
 </div>
 </section>
+<script href="javascript/createreview.js"></script>
 
-<link href="dist/star-rating.css" rel="stylesheet" />
-<script src="dist/star-rating.min.js"></script>
+{{!-- <link href="dist/star-rating.css" rel="stylesheet" />
+<script src="dist/star-rating.min.js"></script> --}}

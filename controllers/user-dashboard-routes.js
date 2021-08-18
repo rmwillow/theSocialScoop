@@ -32,7 +32,8 @@ router.get('/:id', (req, res) => {
         const reviews = reviewData.map(review => review.get({ plain: true }));
         res.render('dashboard', { 
           reviews,
-          loggedIn: true
+          loggedIn: true,
+          
          });
       })
       .catch(err => {

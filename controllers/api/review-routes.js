@@ -52,7 +52,7 @@ router.post("/", (req, res) => {
     review_text: req.body.review_text,
     user_id: req.session.user_id,
     show_id: req.body.show_id,
-    date_watched: req.body.date_watched,
+    date_watched: req.body.date_watched
   })
     .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
