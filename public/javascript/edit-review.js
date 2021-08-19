@@ -1,13 +1,15 @@
 async function editReviewHandler(event) {
   event.preventDefault();
 
+  const id = this.id.split('-')[1];
+  
   const review_text = document
-    .querySelector('textarea[name="updated-review-text"]')
+    .querySelector(`textarea[name="updated-review-text${id}"]`)
     .value.trim();
   // const date_watched = document.querySelector(
   //   'input[name="date-watched"]'
   // ).value;
-  const id = this.id.split('-')[1];
+  
 
   const response = await fetch(`/api/reviews/${id}`, {
       method: "PUT",
@@ -28,5 +30,5 @@ async function editReviewHandler(event) {
 }
 
 document
-  .querySelector(".edit-review-form")
-  .addEventListener("submit", editReviewHandler);
+    .querySelectorAll(".edit-review-form").forEach(element => {
+      element.addEventListener("submit", editReviewHandler);});

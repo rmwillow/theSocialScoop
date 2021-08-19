@@ -14,6 +14,7 @@ async function deleteReviewHandler(event) {
   }
   
   document
-    .querySelector(".delete-review-button")
-    .addEventListener("click", deleteReviewHandler);
+    .querySelectorAll(".delete-review-button").forEach(element => {
+      element.addEventListener("click", deleteReviewHandler);});
+    
   

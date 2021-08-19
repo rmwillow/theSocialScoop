@@ -5,6 +5,7 @@ const sequelize = require('../config/connection');
 
 // withAuth,
 router.get('/', (req, res) => {
+  let user_id = req.session.user_id;
   Review.findAll({
       where: {
           user_id: req.session.user_id
@@ -16,7 +17,13 @@ router.get('/', (req, res) => {
         "show_id",
         "date_watched",
         "created_at",
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE review.id = vote.review_id)'), 'vote_count']
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE review.id = vote.review_id)'), 'vote_count'],
+        [
+          sequelize.literal(
+            `(SELECT COUNT(*) FROM vote AS voted_reviews WHERE voted_reviews.review_id = review.id AND voted_reviews.user_id = ${user_id})`
+          ),
+          "active_user_vote",
+        ],
       ],
       include: [{
         model: User,

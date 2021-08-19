@@ -17,19 +17,27 @@
             </div>
             <h6 class="card-subtitle review-time">{{created_at}}</h6>
             <p class="review-text">{{review_text}}</p>
-            {{#if vote_count}}
+            {{#if active_user_vote}}
               <div class="like-button">
-                <a id="likeButton{{id}}">
+                <a id="likeButton-{{id}}" class="likeButton">
                   <img src="/img/heart.svg">
                   </a>
+                  {{#if vote_count}}
                   <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
+                  {{else}}
+                   <span id="likeReviewText{{id}}">Like review</span>
+                   {{/if}}
                   </div>
             {{else}}
               <div class="like-button-unliked">
-                <a id="likeButton{{id}}">
+                <a class="likeButton" id="likeButton-{{id}}">
                   <img src="/img/heart.svg">
                   </a>
-                  <span id="likeReviewText{{id}}">Like review</span>
+                  {{#if vote_count}}
+                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
+                  {{else}}
+                   <span id="likeReviewText{{id}}">Like review</span>
+                   {{/if}}
                   </div>
             {{/if}}
           </div>
@@ -50,7 +58,7 @@
       </div>
       <div class="modal-body">
         <form class="edit-review-form" id="review-{{id}}">
-            <textarea name="updated-review-text" class="review-textarea" rows="4">{{review_text}}</textarea>
+            <textarea name="updated-review-text{{id}}" class="review-textarea" rows="4">{{review_text}}</textarea>
             <div class="modal-buttons-container">
             <button type="submit" class="btn btn-primary edit-submit-button">Save changes</button>
             <button type="button" class="btn btn-danger delete-review-button" id="delete-{{id}}" data-bs-dismiss="modal">Delete review</button>
