@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Rating, Show, Review, Vote } = require("../models");
+const withAuth = require('../utils/auth');
 const sequelize = require("../config/connection");
 const { Op } = require("sequelize");
 
@@ -14,7 +15,6 @@ router.get("/login", (req, res) => {
 
 // get all shows for homepage
 router.get("/", (req, res) => {
-  console.log(req.session);
   Show.findAll({
     attributes: [
       "id",
@@ -190,13 +190,7 @@ router.get("/search/:term", (req, res) => {
 
 // single-page routes
 router.get("/shows/:id", (req, res) => {
-  let user_id;
-  if(!req.session.user_id) {
-    user_id = 6;
-  } else {
-    user_id = req.session.user_id;
-  }
-
+  let user_id = req.session.user_id;
   Show.findOne({
     where: {
       id: req.params.id,
@@ -246,10 +240,15 @@ router.get("/shows/:id", (req, res) => {
             "active_user_vote",
           ],
         ],
+        order: "vote_count",
         include: [
           {
             model: User,
             attributes: ["username"],
+          },
+          {
+            model: Vote,
+            attributes: ["user_id", "review_id", "id"]
           }
         ],
       },
@@ -260,6 +259,7 @@ router.get("/shows/:id", (req, res) => {
         res.status(404).json({ message: "No show found with this id!" });
         return;
       }
+      // res.json(showData);
       const show = showData.get({ plain: true });
       res.render("single-page", {
         show,

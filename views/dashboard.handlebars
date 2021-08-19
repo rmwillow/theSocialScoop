@@ -4,30 +4,27 @@
       Your Reviews
     </h6>
     {{#each reviews}}
-      <article class="review-container">
+      <article id="{{this.id}}" class="review-container">
         <div class="card">
           <div class="card-body">
             <div class="card-top-row">
             <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#editReviewModal{{id}}">Edit Review</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#editReviewModal{{this.id}}">Edit Review</button>
             </div>
             <h6 class="card-subtitle review-time">{{created_at}}</h6>
             <p class="review-text">{{review_text}}</p>
-            {{#if vote_count}}
-              <div class="like-button">
-                <a id="likeButton{{id}}">
-                  <img src="/img/heart.svg">
-                  </a>
-                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
-                  </div>
-            {{else}}
-              <div class="like-button-unliked">
-                <a id="likeButton{{id}}">
-                  <img src="/img/heart.svg">
-                  </a>
-                  <span id="likeReviewText{{id}}">Like review</span>
-                  </div>
-            {{/if}}
+            <h8 class="card-subtitle total-likes">{{vote_count}} Likes</h8>
+            <section class="like-container" id="{{this.id}}">
+              {{#ifNullEmptyZero active_user_vote}}
+              <div onclick="createUpvoteClickHandler(event);" class="like-button-unliked"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+              </svg><span>Like review</span></div>
+              {{else}}
+              <div onclick="deleteUpvoteClickHandler(event);"class="like-button-liked"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+              </svg><span>Liked</span></div>
+              {{/ifNullEmptyZero}}
+            </section>
           </div>
         </div>
       </article>
@@ -36,7 +33,7 @@
 </section>
 {{!-- EDIT MODAL --}}
 {{#each reviews}}
-<div class="modal fade" id="editReviewModal{{id}}" tabindex="-1" aria-labelledby="editReview" aria-hidden="true">
+<div class="modal fade" id="editReviewModal{{this.id}}" tabindex="-1" aria-labelledby="editReview" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -44,7 +41,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="edit-review-form">
+        <form class="edit-review-form" id="{{this.id}}">
             <textarea name="updated-review-text" class="review-textarea" rows="4">{{review_text}}</textarea>
             <div class="modal-buttons-container">
             <button type="submit" class="btn btn-primary edit-submit-button">Save changes</button>
@@ -60,3 +57,4 @@
 
 <script src="/javascript/edit-review.js"></script>
 <script src="/javascript/delete-review.js"></script>
+<script src="/javascript/upvote.js"></script>

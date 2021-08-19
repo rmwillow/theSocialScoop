@@ -4,7 +4,7 @@ const sequelize = require("../config/connection");
 // create Show model
 class Show extends Model {
   static rateShow(body, models) {
-    return models.Rating.create({
+    return models.Rating.upsert({
       rating: body.rating,
       user_id: body.user_id,
       show_id: body.show_id,

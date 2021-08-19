@@ -54,7 +54,7 @@ nav {
   padding-right: 2rem;
 }
 
-.nav-link, a {
+.nav-link, a .sort {
   font-size: 1.15rem;
   padding-right: 2rem;
   font-weight: 500;
@@ -279,23 +279,35 @@ a:hover {
     padding-top: .5rem;
 }
 
-.like-button, .like-button-unliked {
+.rater {
+  margin-bottom: 1rem;
+}
+
+.show-rating {
+  color: #85a8a2;
+}
+
+.like-button-liked, .like-button-unliked {
     padding-bottom: .5rem;
     border-bottom: .1rem solid #afb4b4;
 }
 
-.like-button span, .like-button-unliked span {
+.like-button-liked span, .like-button-unliked span {
     padding-left: .5rem;
     font-size: .8rem;
     font-weight: 500;
 }
 
-.like-button img {
+.like-button-liked svg {
   filter: invert(40%) sepia(97%) saturate(878%) hue-rotate(328deg) brightness(78%) contrast(92%);
 }
 
-.like-button-unliked img {
+.like-button-unliked svg {
   filter: invert(76%) sepia(9%) saturate(86%) hue-rotate(131deg) brightness(92%) contrast(94%);
+}
+
+.total-likes {
+  color: rgb(86, 126, 126);
 }
 
 

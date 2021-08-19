@@ -7,9 +7,8 @@ async function editReviewHandler(event) {
   // const date_watched = document.querySelector(
   //   'input[name="date-watched"]'
   // ).value;
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
+  const id = event.target.closest('.edit-review-form').id;
+
   const response = await fetch(`/api/reviews/${id}`, {
       method: "PUT",
       body: JSON.stringify({
