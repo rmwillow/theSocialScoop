@@ -1,28 +1,28 @@
 async function searchBarHandler(event) {
     event.preventDefault();
-  
+
     const term = document.querySelector(
       'input[name="search-text"]'
     ).value.trim();
+
+    console.log(term);
   
     const response = await fetch(`/search/${term}`, {
       method: "GET",
-      body: JSON.stringify({
-        term,
-      }),
       headers: {
         "Content-Type": "application/json",
-      },
+      }
     });
   
     if (response.ok) {
-      document.location.reload();
+      console.log("success");
+      document.location.replace(`/search/${term}`);
     } else {
       alert(response.statusText);
     }
   }
-  
+
   document
-    .querySelector(".searh-bar")
+    .getElementById("search-bar")
     .addEventListener("submit", searchBarHandler);
   

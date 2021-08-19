@@ -1,3 +1,15 @@
+<section class="search-section">
+   <form action="/search/" id="search-bar" class="input-group mb-3 search-section-container">
+                  <input type="text" name="search-text" class="search-bar">
+                  <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary search-button">Search</button>
+                  </div>
+   </form>
+   <section class="sort">
+      <h6><a href="/sort/az">Sort by Title (A-Z)</a></h6>
+      <h6><a href="/sort/rating">Sort by Rating (High-Low)</a></h6>
+   </section>
+</section>
 <section class="show-posters-container">
 {{#each shows}}
 <div class="poster-container"> 
@@ -5,3 +17,4 @@
 </div>
 {{/each}}
 </section>
+<script src="/javascript/search-show.js"></script>

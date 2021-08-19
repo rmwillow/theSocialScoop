@@ -121,6 +121,7 @@ router.get("/sort/:type", (req, res) => {
 
 // get all reviews/shows for homepage/search results page
 router.get("/search/:term", (req, res) => {
+  console.log("params: " + req.params.term);
   Show.findAll({
     where: {
       [Op.or]: {
@@ -174,6 +175,7 @@ router.get("/search/:term", (req, res) => {
           .json({ message: "No shows found that meet this criteria!" });
         return;
       }
+      //res.json(showData);
       const shows = showData.map((post) => post.get({ plain: true }));
       res.render("homepage", {
         shows,
