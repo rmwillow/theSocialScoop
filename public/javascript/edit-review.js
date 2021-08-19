@@ -7,13 +7,12 @@ async function editReviewHandler(event) {
   // const date_watched = document.querySelector(
   //   'input[name="date-watched"]'
   // ).value;
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
+  const id = this.id.split('-')[1];
+
   const response = await fetch(`/api/reviews/${id}`, {
       method: "PUT",
       body: JSON.stringify({
-        review_text,
+        review_text
         // date_watched
       }),
     headers: {

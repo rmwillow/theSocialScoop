@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 // const withAuth = require("../utils/auth");
 
 // withAuth,
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
   Review.findAll({
       where: {
           user_id: req.session.user_id

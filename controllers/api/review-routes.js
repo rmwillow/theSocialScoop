@@ -78,7 +78,7 @@ router.put("/:id", (req, res) => {
   Review.update(
     {
       review_text: req.body.review_text,
-      date_watched: req.body.date_watched,
+      // date_watched: req.body.date_watched,
     },
     {
       where: {

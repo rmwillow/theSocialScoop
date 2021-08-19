@@ -2,7 +2,6 @@ async function upvoteClickHandler(event) {
   event.preventDefault();
 
   const id = this.id.split('-')[1];
-  console.log(id);
   const response = await fetch(`/api/reviews/upvote`, {
     method: "PUT",
     body: JSON.stringify({

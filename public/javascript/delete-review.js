@@ -1,9 +1,7 @@
 async function deleteReviewHandler(event) {
     event.preventDefault();
   
-    const id = window.location.toString().split("/")[
-      window.location.toString().split("/").length - 1
-    ];
+    const id = this.id.split('-')[1];
     const response = await fetch(`/api/reviews/${id}`, {
       method: "DELETE",
     });

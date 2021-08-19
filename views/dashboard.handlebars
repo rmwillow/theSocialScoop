@@ -44,11 +44,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="edit-review-form">
+        <form class="edit-review-form" id="review-{{id}}">
             <textarea name="updated-review-text" class="review-textarea" rows="4">{{review_text}}</textarea>
             <div class="modal-buttons-container">
             <button type="submit" class="btn btn-primary edit-submit-button">Save changes</button>
-            <button type="button" class="btn btn-danger delete-review-button" data-bs-dismiss="modal">Delete review</button>
+            <button type="button" class="btn btn-danger delete-review-button" id="delete-{{id}}" data-bs-dismiss="modal">Delete review</button>
             </div>
         </form>
       </div>
