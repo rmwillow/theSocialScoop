@@ -179,16 +179,11 @@ nav {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.review-button, .search-button {
+.review-button {
     margin-top: 1rem;
-    margin-left: 1rem;
     border-color: #afb4b4;
     border-radius: .33rem;
     background-color: rgba(0, 0, 0, 0);
-}
-
-.search-button {
-  margin-top: 0;
 }
 
 .review-button:hover, .search-button:hover {
@@ -220,28 +215,6 @@ input, .search-bar {
   background-color:  rgba(35, 51, 61, 1);
   color: #afb4b4;
   border-radius: .33rem;
-}
-
-.search-section {
-  padding-top: 5rem;
-  display: flex;
-  align-content: center;
-  flex-direction: column;
-  align-items: left;
-  margin-bottom: 4rem;
-  margin-left: 4rem;
-}
-
-.search-section-container {
-  width: 100%
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  color: rgb(86, 126, 126);
 }
 
 .card-body, .card {
