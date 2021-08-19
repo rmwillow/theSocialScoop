@@ -54,7 +54,7 @@ nav {
   padding-right: 2rem;
 }
 
-.nav-link, a {
+.nav-link, a .sort {
   font-size: 1.15rem;
   padding-right: 2rem;
   font-weight: 500;
