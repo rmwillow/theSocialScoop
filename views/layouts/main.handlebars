@@ -20,7 +20,7 @@
     {{! STAR RATING CSS }}
     <link href="/stylesheets/star-rating.css" rel="stylesheet" />
   </head>
-  <body>
+   <body>
       <header>
           <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
@@ -32,7 +32,7 @@
       <ul class="navbar-nav">
         {{#if loggedIn}}
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/dashboard/{{id}}">DASHBOARD</a>
+          <a class="nav-link" aria-current="page" href="/dashboard">DASHBOARD</a>
         </li>
          <li class="nav-item">
           <a class="nav-link" id="logout-link" href="/">LOG OUT</a>
@@ -42,26 +42,21 @@
           <a class="nav-link" href="/login">LOG IN</a>
         </li>
         {{/if}}
-        <li>
-           <form action="/search/" id="search-bar" class="input-group mb-3 search-section-container">
+        <li class="search-container">
+           <form action="/search/" id="search-bar" class=" mb-3">
                   <input type="text" name="search-text" class="search-bar">
-                  <div class="input-group-append">
-                  <div class="btn-group">
-  <button type="submit" class="btn btn-primary search-button">Search</button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <div class="btn-group search-button-group">
+  <button type="submit" class="btn btn-primary btn-sm search-button">SEARCH</button>
+  <button type="button" class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="/sort/az">Sort A-Z</a></li>
     <li><a class="dropdown-item" href="/sort/rating">Sort by rating</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
   </ul>
 </div>
-                  </div>
    </form>
         </li>
-   </section>
       </ul>
     </div>
   </div>
@@ -79,5 +74,6 @@
     {{/if}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="/javascript/search-show.js"></script>
   </body>
 </html>

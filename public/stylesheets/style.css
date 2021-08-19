@@ -54,14 +54,15 @@ nav {
   padding-right: 2rem;
 }
 
-.nav-link, a {
+.nav-link {
   font-size: 1.15rem;
+  padding-top: .25rem;
   padding-right: 2rem;
   font-weight: 500;
   color: #afb4b4;
 }
 
-.nav-link:hover, a {
+.nav-link:hover {
   color: #d3d6d6;
 }
 
@@ -117,6 +118,23 @@ nav {
    border-color: rgba(35, 51, 61, 1);
 }
 
+.search-button-group {
+  margin-left: .5rem;
+}
+
+.search-bar {
+  background-color:  rgba(35, 51, 61, 1);
+  color: #afb4b4;
+  border-radius: .5rem;
+  border-color: #afb4b4;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
 
 /* HOMEPAGE.HANDLEBARS STYLES */
 .show-posters-container {
@@ -166,7 +184,8 @@ nav {
 
 .badge {
     font-weight: 300;
-    margin-left: 1rem;
+    
+    margin-left: 1rem
 }
 
 .badge a {
@@ -180,13 +199,13 @@ nav {
 }
 
 .review-button {
-    margin-top: 1rem;
+   margin-top: 1rem;
     border-color: #afb4b4;
     border-radius: .33rem;
     background-color: rgba(0, 0, 0, 0);
 }
 
-.review-button:hover, .search-button:hover {
+.review-button:hover {
    background-color: rgba(35, 51, 61, 1);;
    border-color: rgba(35, 51, 61, 1);
 }
@@ -209,12 +228,6 @@ nav {
     color: #afb4b4;
     width: 100%;
     border-radius: .33rem;
-}
-
-input, .search-bar {
-  background-color:  rgba(35, 51, 61, 1);
-  color: #afb4b4;
-  border-radius: .33rem;
 }
 
 .card-body, .card {
@@ -252,75 +265,20 @@ input, .search-bar {
     padding-top: .5rem;
 }
 
-.like-button, .like-button-unliked {
+.like-button {
     padding-bottom: .5rem;
     border-bottom: .1rem solid #afb4b4;
 }
 
-.like-button span, .like-button-unliked span {
+.like-button span {
     padding-left: .5rem;
     font-size: .8rem;
     font-weight: 500;
 }
 
 .like-button img {
-  filter: invert(40%) sepia(97%) saturate(878%) hue-rotate(328deg) brightness(78%) contrast(92%);
+    filter: invert(76%) sepia(9%) saturate(86%) hue-rotate(131deg) brightness(92%) contrast(94%);
 }
-
-.like-button-unliked img {
-  filter: invert(76%) sepia(9%) saturate(86%) hue-rotate(131deg) brightness(92%) contrast(94%);
-}
-
-
-/* USER DASHBOARD STYLES */
-.user-dashboard {
-  padding-top: 2rem;
-  display: flex;
-  align-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.dashboard-headline {
-  padding-left: 1rem;
-  font-size: 1.5rem;
-}
-
-.card-top-row {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-between;
-}
-
-.card-top-row button {
-  font-size: .9rem;
-  float: right;
-  text-decoration: underline;
-  border: none;
-  background-color: rgba(0,0,0,0);
-  color: #afb4b4;
-}
-
-.dashboard-reviews-container {
-  width: 75%;
-}
-
-/* MODAL STYLES */
-.modal {
-  color: #afb4b4;
-}
-.modal-header, .modal-body, .modal-footer {
-  background-color:  rgba(35, 51, 61, 1);
-  color: #afb4b4;
-  border: none;
-}
-
-.modal-buttons-container {
-  float: right;
-  padding-top: 2rem;
-}
-
 
 
 /*!
