@@ -12,22 +12,24 @@ async function reviewFormHandler(event) {
     window.location.toString().split("/").length - 1
   ];
 
-  const response = await fetch(`/api/reviews/`, {
-    method: "POST",
-    body: JSON.stringify({
-      review_text,
-      date_watched,
-      show_id,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  if (review_text) {
+    const response = await fetch('/api/reviews', {
+      method: 'POST',
+      body: JSON.stringify({
+        review_text,
+        date_watched,
+        show_id,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
 
-  if (response.ok) {
-    document.location.reload();
-  } else {
-    alert(response.statusText);
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
   }
 }
 

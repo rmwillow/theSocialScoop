@@ -54,14 +54,14 @@ nav {
   padding-right: 2rem;
 }
 
-.nav-link {
+.nav-link, a {
   font-size: 1.15rem;
   padding-right: 2rem;
   font-weight: 500;
   color: #afb4b4;
 }
 
-.nav-link:hover {
+.nav-link:hover, a {
   color: #d3d6d6;
 }
 
@@ -166,8 +166,7 @@ nav {
 
 .badge {
     font-weight: 300;
-    
-    margin-left: 1rem
+    margin-left: 1rem;
 }
 
 .badge a {
@@ -180,14 +179,19 @@ nav {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.review-button {
-   margin-top: 1rem;
+.review-button, .search-button {
+    margin-top: 1rem;
+    margin-left: 1rem;
     border-color: #afb4b4;
     border-radius: .33rem;
     background-color: rgba(0, 0, 0, 0);
 }
 
-.review-button:hover {
+.search-button {
+  margin-top: 0;
+}
+
+.review-button:hover, .search-button:hover {
    background-color: rgba(35, 51, 61, 1);;
    border-color: rgba(35, 51, 61, 1);
 }
@@ -210,6 +214,34 @@ nav {
     color: #afb4b4;
     width: 100%;
     border-radius: .33rem;
+}
+
+input, .search-bar {
+  background-color:  rgba(35, 51, 61, 1);
+  color: #afb4b4;
+  border-radius: .33rem;
+}
+
+.search-section {
+  padding-top: 5rem;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-items: left;
+  margin-bottom: 4rem;
+  margin-left: 4rem;
+}
+
+.search-section-container {
+  width: 100%
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(86, 126, 126);
 }
 
 .card-body, .card {
