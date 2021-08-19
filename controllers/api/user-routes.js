@@ -16,10 +16,11 @@ router.get('/', (req, res) => {
 //GET ROUTE BY ID
 router.get('/id:', (req, res) => {
     User.findOne({
-        attributes: { exclude: ['password'] },
+
         where: {
             id: req.params.id
         },
+        attributes: { exclude: ['password'] },
         include: [
             {
                 model: Show,

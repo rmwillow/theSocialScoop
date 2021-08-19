@@ -161,7 +161,7 @@ router.get("/search/:term", (req, res) => {
         include: [
           {
             model: User,
-            attributes: ["username"],
+            attributes: ["username", ],
           },
         ],
       },
@@ -249,7 +249,11 @@ router.get("/shows/:id", (req, res) => {
         include: [
           {
             model: User,
-            attributes: ["username"],
+            attributes: ["id","username"],
+          },
+          {
+            model: Vote,
+            attributes: ["user_id"]
           }
         ],
       },
@@ -264,7 +268,8 @@ router.get("/shows/:id", (req, res) => {
       res.render("single-page", {
         show,
         loggedIn: req.session.loggedIn,
-        id: req.session.user_id
+        id: req.session.user_id,
+
        });
     })
     .catch((err) => {

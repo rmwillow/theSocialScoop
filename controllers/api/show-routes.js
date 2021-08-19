@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Rating, Review, Show, User } = require('../../models');
+const { Rating, Review, Show, User, Vote } = require('../../models');
 const sequelize = require('../../config/connection');
 
 // get all show info
@@ -47,10 +47,16 @@ router.get(('/:id'), (req, res) => {
             {
               model: Review,
               attributes: ['id', 'review_text', 'user_id', 'show_id', 'date_watched', 'created_at'],
-              include: {
+              include: [
+                  {
                 model: User,
-                attributes: ['username']
-              }
+                attributes: ['id', 'username']
+              },
+              {
+                  model: Vote,
+                  attributes: ["user_id"]
+                  
+              }]
             }
         ]
     })
