@@ -240,6 +240,7 @@ router.get("/shows/:id", (req, res) => {
             "active_user_vote",
           ],
         ],
+        order: "vote_count",
         include: [
           {
             model: User,
