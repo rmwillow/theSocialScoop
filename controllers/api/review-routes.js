@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Review, Vote, User, Show } = require("../../models");
-const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
+const sequelize = require('../../config/connection');
 
 //get all reviews
 router.get("/", (req, res) => {
@@ -46,7 +46,8 @@ router.get("/:show", (req, res) => {
 });
 
 // create review
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
+//router.post('/', withAuth, (req, res) => {
   Review.create({
     review_text: req.body.review_text,
     user_id: req.session.user_id,
@@ -61,7 +62,8 @@ router.post('/', withAuth, (req, res) => {
 });
 
 // create upvote
-router.put("/upvote", withAuth, (req, res) => {
+router.put("/upvote", (req, res) => {
+//router.put("/upvote", withAuth, (req, res) => {
   Review.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, User })
     .then((updatedVoteData) => res.json(updatedVoteData))
     .catch((err) => {
@@ -71,7 +73,8 @@ router.put("/upvote", withAuth, (req, res) => {
 });
 
 // update review
-router.put("/:id", withAuth, (req, res) => {
+router.put("/:id", (req, res) => {
+//router.put("/:id", withAuth, (req, res) => {
   Review.update(
     {
       review_text: req.body.review_text,
