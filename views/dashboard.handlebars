@@ -1,0 +1,77 @@
+<section class="user-dashboard review-section">
+  <div class="dashboard-reviews-container">
+    <h6 class="dashboard-headline">
+      Your Reviews
+    </h6>
+    {{#each reviews}}
+      <article class="poster-review-container">
+        <div class="poster-container">
+           <a class="hvr-float-shadow hvr-glow" href="/shows/{{id}}"><img src="https://image.tmdb.org/t/p/w200/{{show.poster_path}}"></a>
+        </div>
+        <div class="review-container">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-top-row">
+            <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#editReviewModal{{id}}">Edit Review</button>
+            </div>
+            <h6 class="card-subtitle review-time">{{created_at}}</h6>
+            <p class="review-text">{{review_text}}</p>
+            {{#if active_user_vote}}
+              <div class="like-button">
+                <a id="likeButton-{{id}}" class="likeButton">
+                  <img src="/img/heart.svg">
+                  </a>
+                  {{#if vote_count}}
+                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
+                  {{else}}
+                   <span id="likeReviewText{{id}}">Like review</span>
+                   {{/if}}
+                  </div>
+            {{else}}
+              <div class="like-button-unliked">
+                <a class="likeButton" id="likeButton-{{id}}">
+                  <img src="/img/heart.svg">
+                  </a>
+                  {{#if vote_count}}
+                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
+                  {{else}}
+                   <span id="likeReviewText{{id}}">Like review</span>
+                   {{/if}}
+                  </div>
+            {{/if}}
+          </div>
+        </div>
+        </div>
+      </article>
+    {{/each}}
+  </div>
+</section>
+{{!-- EDIT MODAL --}}
+{{#each reviews}}
+<div class="modal fade" id="editReviewModal{{id}}" tabindex="-1" aria-labelledby="editReview" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="edit-review-form" id="review-{{id}}">
+            <textarea name="updated-review-text{{id}}" class="review-textarea" rows="4">{{review_text}}</textarea>
+            <div class="modal-buttons-container">
+            <button type="submit" class="btn btn-primary edit-submit-button">Save changes</button>
+            <button type="button" class="btn btn-danger delete-review-button" id="delete-{{id}}" data-bs-dismiss="modal">Delete review</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
+
+{{#if reviews}}
+<script src="/javascript/edit-review.js"></script>
+<script src="/javascript/delete-review.js"></script>
+<script src="/javascript/upvote.js"></script>
+{{/if}}

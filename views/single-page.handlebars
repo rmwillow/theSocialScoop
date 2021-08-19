@@ -1,0 +1,87 @@
+<section class="show-info-section">
+<div class="container">
+    <div class="row">
+    <div class="col single-page-poster-container">
+<img src="https://image.tmdb.org/t/p/w300/{{show.poster_path}}">
+</div>
+<div class="col">
+<h1>{{show.title}}   <span class="show-title-span">2021 | </span>
+{{!-- <span class="show-title-span">Created By</span> --}}
+</h1>
+<p>{{show.overview}}</p>
+</div>
+<div class="col show-info-container">
+<h6>Rate</h6>
+<div id="rater">
+    <select class="star-rating">
+    <option value=""></option>
+    <option value="5"></option>
+    <option value="4"></option>
+    <option value="3"></option>
+    <option value="2"></option>
+    <option value="1"></option>
+</select>
+</div>
+<h6>Genre <span class="badge bg-secondary"><a href="/search/{{show.genre}}">{{show.genre}}</a></span></h6>
+<h6>Seasons {{show.season_count}}</h6>
+<h6>Episodes {{show.episode_count}}</h6>
+<h6>More At <span class="badge bg-secondary"><a href="https://www.themoviedb.org/tv/{{show.apiId}}">tmdb</a></span></h6>
+<div class="d-grid gap-2">
+  <h6 class="btn btn-primary review-button"><a href="#review-form">LEAVE A REVIEW</a></h6>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="review-section">
+    <div class="review-section-container">
+        {{!-- {{#if loggedIn}} --}}
+    <h6>LEAVE A REVIEW</h6>
+    <form class="review-form" id="review-form">
+            <textarea name="review-textarea" id="review-textarea{{id}}" class="review-textarea" rows="4"></textarea>
+            <button type="submit" class="btn btn-primary review-button">Submit</button>
+        </form>
+        {{!-- {{/if}} --}}
+    {{#each show.reviews}}
+    <article class="review-container">
+        <div class="card">
+  <div class="card-body">
+    <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
+    <h6 class="card-subtitle review-time">{{created_at}}</h6>
+    <p class="review-text">{{review_text}}</p>
+   {{#if active_user_vote}}
+              <div class="like-button">
+                <a id="likeButton-{{id}}" class="likeButton">
+                  <img src="/img/heart.svg">
+                  </a>
+                  {{#if vote_count}}
+                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
+                  {{else}}
+                   <span id="likeReviewText{{id}}">Like review</span>
+                   {{/if}}
+                  </div>
+            {{else}}
+              <div class="like-button-unliked">
+                <a class="likeButton" id="likeButton-{{id}}">
+                  <img src="/img/heart.svg">
+                  </a>
+                  {{#if vote_count}}
+                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
+                  {{else}}
+                   <span id="likeReviewText{{id}}">Like review</span>
+                   {{/if}}
+                  </div>
+            {{/if}}
+  </div>
+</div>
+    </article>
+{{/each}}
+</div>
+</section>
+
+<script src="/javascript/star-rating.js"></script>
+<script src="/javascript/rate-show.js"></script>
+<script src="/javascript/create-review.js"></script>
+{{!-- <script src="/javascript/delete-review.js"></script>
+<script src="/javascript/edit-review.js"></script> --}}
+<script src="/javascript/upvote.js"></script>
