@@ -325,8 +325,13 @@ nav {
   color: #afb4b4;
 }
 
+.review-container {
+  width: 100%;
+  padding-bottom: 4rem;
+}
+
 .dashboard-reviews-container {
-  width: 75%;
+  width: 75%
 }
 
 /* MODAL STYLES */
@@ -342,6 +347,13 @@ nav {
 .modal-buttons-container {
   float: right;
   padding-top: 2rem;
+}
+
+.poster-review-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 /*!

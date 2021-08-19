@@ -4,7 +4,11 @@
       Your Reviews
     </h6>
     {{#each reviews}}
-      <article class="review-container">
+      <article class="poster-review-container">
+        <div class="poster-container">
+           <a class="hvr-float-shadow hvr-glow" href="/shows/{{id}}"><img src="https://image.tmdb.org/t/p/w200/{{show.poster_path}}"></a>
+        </div>
+        <div class="review-container">
         <div class="card">
           <div class="card-body">
             <div class="card-top-row">
@@ -29,6 +33,7 @@
                   </div>
             {{/if}}
           </div>
+        </div>
         </div>
       </article>
     {{/each}}
@@ -57,6 +62,8 @@
 </div>
 {{/each}}
 
-
+{{#if reviews}}
 <script src="/javascript/edit-review.js"></script>
 <script src="/javascript/delete-review.js"></script>
+<script src="/javascript/upvote.js"></script>
+{{/if}}
