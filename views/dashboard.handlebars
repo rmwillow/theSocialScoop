@@ -4,12 +4,12 @@
       Your Reviews
     </h6>
     {{#each reviews}}
-      <article class="review-container">
+      <article id="{{this.id}}" class="review-container">
         <div class="card">
           <div class="card-body">
             <div class="card-top-row">
             <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#editReviewModal{{id}}">Edit Review</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#editReviewModal{{this.id}}">Edit Review</button>
             </div>
             <h6 class="card-subtitle review-time">{{created_at}}</h6>
             <p class="review-text">{{review_text}}</p>
@@ -33,7 +33,7 @@
 </section>
 {{!-- EDIT MODAL --}}
 {{#each reviews}}
-<div class="modal fade" id="editReviewModal{{id}}" tabindex="-1" aria-labelledby="editReview" aria-hidden="true">
+<div class="modal fade" id="editReviewModal{{this.id}}" tabindex="-1" aria-labelledby="editReview" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -41,7 +41,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="edit-review-form">
+        <form class="edit-review-form" id="{{this.id}}">
             <textarea name="updated-review-text" class="review-textarea" rows="4">{{review_text}}</textarea>
             <div class="modal-buttons-container">
             <button type="submit" class="btn btn-primary edit-submit-button">Save changes</button>

@@ -1,9 +1,8 @@
 async function deleteReviewHandler(event) {
     event.preventDefault();
-  
-    const id = window.location.toString().split("/")[
-      window.location.toString().split("/").length - 1
-    ];
+
+    const id = event.target.closest('.edit-review-form').id;
+
     const response = await fetch(`/api/reviews/${id}`, {
       method: "DELETE",
     });
