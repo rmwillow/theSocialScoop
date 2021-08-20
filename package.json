@@ -33,6 +33,10 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
   }
 }
 
