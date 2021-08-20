@@ -16,6 +16,7 @@ const sess = {
   secret: "Super secret secret",
   cookie: {},
   resave: false,
+  bind: '0.0.0.0',
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
@@ -78,6 +79,6 @@ app.use(require("./controllers/"));
 
 // turn on connection to db and server
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
+  console.log(`App listening on port ${ PORT }`);
   sequelize.sync({ force: false });
 });
