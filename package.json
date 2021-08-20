@@ -12,10 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/rmwillow/theSocialScoop.git"
   },
-  "keywords": [
-    "example",
-    "heroku"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {

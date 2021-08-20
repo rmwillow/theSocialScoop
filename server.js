@@ -3,12 +3,13 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const handlebars = require("handlebars");
-const routes = require('./controllers');
+const router = require('./controllers');
 
 
 
 const app = express();
 // const PORT = process.env.PORT || 3000;
+app.enable('trust proxy');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -16,10 +17,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 app.listen(process.env.PORT || 3000)
 // turn on connection to db and server
-// app.listen(PORT, () => {
-//   console.log(`App listening on port ${PORT}!`);
-//   sequelize.sync({ force: false });
-// });
 
 //cookies
 const sess = {
@@ -85,3 +82,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers/'));
 
 
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}!`);
+  sequelize.sync({ force: false });
+});
