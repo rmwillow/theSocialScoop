@@ -30,12 +30,5 @@
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",
     "star-rating.js": "^4.1.4"
-  },
-  "devDependencies": {
-    "cross-env": "^7.0.3"
-  },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
   }
 }
