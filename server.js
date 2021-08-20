@@ -6,15 +6,11 @@ const handlebars = require("handlebars");
 const router = require('./controllers');
 
 
-
 const app = express();
-// const PORT = process.env.PORT || 3000;
-app.enable('trust proxy');
+const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-
 app.listen(process.env.PORT || 3000)
 // turn on connection to db and server
 
@@ -72,7 +68,7 @@ app.set("view engine", "handlebars");
 
 // express middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 //setting the middleware
 app.use(express.static(path.join(__dirname, 'public')));
@@ -81,8 +77,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(routes);
 app.use(require('./controllers/'));
 
-
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-  sequelize.sync({ force: false });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
