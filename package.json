@@ -1,11 +1,9 @@
 {
   "name": "thesocialscoop",
   "version": "1.0.0",
-  "engines": "12.22.3",
   "description": "## Elevator Pitch broadcastr is a social engagement application that makes it easy for avid TV watchers to find their next bingeworthy show. Users can search for TV shows of all types of genres, read reviews submitted by other users, and upvote those reviews. After binging a show, users can come back to the app and share a review of their own.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeds/index.js"
   },
@@ -32,5 +30,7 @@
     "sequelize": "^6.6.5",
     "star-rating.js": "^4.1.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
 }
