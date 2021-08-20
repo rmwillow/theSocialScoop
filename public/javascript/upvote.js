@@ -1,15 +1,16 @@
-async function upvoteClickHandler(event) {
+async function createUpvoteClickHandler(event) {
   event.preventDefault();
 
-  const id = this.id.split('-')[1];
-  const response = await fetch(`/api/reviews/upvote`, {
-    method: "PUT",
+  const id = event.target.closest('.like-container').id;
+
+  const response = await fetch('/api/reviews/upvote', {
+    method: 'PUT',
     body: JSON.stringify({
-      review_id: id,
+      review_id: id
     }),
     headers: {
-      "Content-Type": "application/json",
-    },
+      'Content-Type': 'application/json'
+    }
   });
 
   if (response.ok) {
@@ -19,7 +20,29 @@ async function upvoteClickHandler(event) {
   }
 }
 
-document
-  .querySelectorAll(".likeButton").forEach(element => {
-    element.addEventListener("click", upvoteClickHandler);
-  })
+async function deleteUpvoteClickHandler(event) {
+  event.preventDefault();
+
+  const review_id = event.target.closest('.like-container').id;
+
+  const response = await fetch(`/api/reviews/upvote/${review_id}`, {
+    method: 'DELETE',
+    body: JSON.stringify({
+      review_id: review_id
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert(response.statusText);
+  }
+}
+
+// document
+//   .querySelectorAll(".likeButton").forEach(element => {
+//     element.addEventListener("click", upvoteClickHandler);
+//   })

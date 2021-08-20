@@ -5,22 +5,15 @@
 <img src="https://image.tmdb.org/t/p/w300/{{show.poster_path}}">
 </div>
 <div class="col">
-<h1>{{show.title}}   <span class="show-title-span">2021 | </span>
+<h1>{{show.title}}   <span class="show-title-span">2021 | </span><span class="show-title-span show-rating">{{show.rating_average}} Rating</span></h1>
 {{!-- <span class="show-title-span">Created By</span> --}}
 </h1>
 <p>{{show.overview}}</p>
 </div>
 <div class="col show-info-container">
 <h6>Rate</h6>
-<div id="rater">
-    <select class="star-rating">
-    <option value=""></option>
-    <option value="5"></option>
-    <option value="4"></option>
-    <option value="3"></option>
-    <option value="2"></option>
-    <option value="1"></option>
-</select>
+<div class="rater" id="rater">
+    <select class="star-rating">{{selectRating show.active_user_rating}}</select>
 </div>
 <h6>Genre <span class="badge bg-secondary"><a href="/search/{{show.genre}}">{{show.genre}}</a></span></h6>
 <h6>Seasons {{show.season_count}}</h6>
@@ -49,29 +42,21 @@
     <h5 class="card-title review-username"><span>Review by</span>{{user.username}}</h5>
     <h6 class="card-subtitle review-time">{{created_at}}</h6>
     <p class="review-text">{{review_text}}</p>
-   {{#if active_user_vote}}
-              <div class="like-button">
-                <a id="likeButton-{{id}}" class="likeButton">
-                  <img src="/img/heart.svg">
-                  </a>
-                  {{#if vote_count}}
-                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
-                  {{else}}
-                   <span id="likeReviewText{{id}}">Like review</span>
-                   {{/if}}
-                  </div>
-            {{else}}
-              <div class="like-button-unliked">
-                <a class="likeButton" id="likeButton-{{id}}">
-                  <img src="/img/heart.svg">
-                  </a>
-                  {{#if vote_count}}
-                  <span id="likeReviewText{{id}}">{{vote_count}} likes</span>
-                  {{else}}
-                   <span id="likeReviewText{{id}}">Like review</span>
-                   {{/if}}
-                  </div>
-            {{/if}}
+    <h8 class="card-subtitle total-likes">{{vote_count}} Likes</h8>
+    <section class="like-container" id="{{this.id}}">
+    <section class="like-container" id="{{this.id}}">
+    {{#ifNullEmptyZero active_user_vote}}
+    <div onclick="createUpvoteClickHandler(event);" class="like-button-unliked"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+    </svg><span>Like review</span></div>
+    {{!-- <div class="like-button-unliked"><a id="likeButton{{id}}><img src="/img/heart.svg"></a><span id="likeReviewText{{id}}">Like review</span></div> --}}
+    {{else}}
+    <div onclick="deleteUpvoteClickHandler(event);"class="like-button-liked"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+    </svg><span>Liked</span></div>
+    </section>
+    {{!-- <div class="like-button-liked"><a id="likeButton{{id}}><img src="/img/heart.svg"></a><span id="likeReviewText{{id}}">Liked</span></div> --}}
+    {{/ifNullEmptyZero}}
   </div>
 </div>
     </article>
