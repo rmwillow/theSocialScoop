@@ -6,7 +6,7 @@ const handlebars = require("handlebars");
 const routes = require("./controllers");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -77,7 +77,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(require("./controllers/"));
 
 // turn on connection to db and server
-app.listen(PORT, () => {
-  console.log(`App listening on port ${ PORT }`);
-  sequelize.sync({ force: false });
-});
+// app.listen(PORT, () => {
+//   console.log(`App listening on port ${ PORT }`);
+//   sequelize.sync({ force: false });
+// });
+
+let port = process.env.PORT;
+if (port == null || port == "") { port = 3000;};
+app.listen(port, function () { console.log("Server started successfully");});
