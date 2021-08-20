@@ -9,7 +9,7 @@ const router = require('./controllers');
 
 const app = express();
 // const PORT = process.env.PORT || 3000;
-app.enable('trust proxy');
+
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -17,6 +17,8 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 app.listen(process.env.PORT || 3000)
 // turn on connection to db and server
+
+
 
 //cookies
 const sess = {
