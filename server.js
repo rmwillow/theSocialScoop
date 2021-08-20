@@ -76,6 +76,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(routes);
 app.use(require('./controllers/'));
 
+
 // turn on connection to db and server
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);

@@ -13,6 +13,7 @@
     "url": "git+https://github.com/rmwillow/theSocialScoop.git"
   },
   "keywords": [
+    "example",
     "heroku"
   ],
   "author": "",
@@ -31,5 +32,8 @@
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",
     "star-rating.js": "^4.1.4"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
