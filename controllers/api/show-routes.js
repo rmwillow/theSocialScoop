@@ -73,6 +73,26 @@ router.get(('/:id'), (req, res) => {
     });
 });
 
+// add show to database
+router.post('/', (req, res) => {
+    Show.create({
+        title: req.body.title,
+        overview: req.body.overview,
+        poster_path: req.body.poster_path,
+        genre: req.body.genre,
+        season_count: req.body.season_count,
+        episode_count: req.body.episode_count,
+        apiId: req.body.apiId,
+        createdBy: req.body.createdBy,
+        airDate: req.body.airDate
+    })
+    .then(showData => res.json(showData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 // add rating to show
 router.put('/rate', (req, res) => {
     // custom static method created in models/Show.js
