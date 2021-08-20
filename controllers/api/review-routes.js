@@ -63,14 +63,14 @@ router.post('/', (req, res) => {
 
 // create upvote
 router.put("/upvote", (req, res) => {
-//router.put("/upvote", withAuth, (req, res) => {
-  Review.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, User })
-    .then((updatedVoteData) => res.json(updatedVoteData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+  //router.put("/upvote", withAuth, (req, res) => {
+    Review.upvote({ review_id: req.body.review_id, user_id: req.session.user_id }, { Vote, User })
+      .then((updatedVoteData) => res.json(updatedVoteData))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 // update review
 router.put("/:id", (req, res) => {
@@ -104,6 +104,27 @@ router.delete("/:id", (req, res) => {
   Review.destroy({
     where: {
       id: req.params.id,
+    },
+  })
+    .then((dbReviewData) => {
+      if (!dbReviewData) {
+        res.status(404).json({ message: "No comment found with this id!" });
+        return;
+      }
+      res.json(dbReviewData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+//delete like
+router.delete("/upvote/:review_id", (req, res) => {
+  Vote.destroy({
+    where: {
+      review_id: req.params.review_id,
+      user_id: req.session.user_id
     },
   })
     .then((dbReviewData) => {
