@@ -1,9 +1,6 @@
 const Sequelize = require('sequelize');
-const seedAll = require('../seeds/index');
 
 require('dotenv').config();
-
-seedAll();
 
 // create connection to db, whether local on on heroku using jawsdb
 const sequelize = process.env.JAWSDB_URL
